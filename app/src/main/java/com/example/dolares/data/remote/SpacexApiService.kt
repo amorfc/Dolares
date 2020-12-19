@@ -8,6 +8,6 @@ import retrofit2.http.GET
 interface SpacexApiService {
 
     @GET("capsules")
-    fun getCapsules(): Deferred<List<Capsule>>
+    suspend fun getAllCapsules(): Response<List<Capsule>>
 
 }
