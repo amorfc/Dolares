@@ -13,7 +13,7 @@ class DolaresApplication: Application() {
         startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@DolaresApplication)
-            modules(listOf())
+            modules(listOf(remoteDataSourceModule))
         }
     }
 }

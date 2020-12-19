@@ -9,30 +9,16 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-val retrofitModule = module {
+val remoteDataSourceModule = module {
 
-    fun provideGson():Gson{
-        return GsonBuilder().create()
-    }
-
-    fun provideHttpClient():OkHttpClient{
-        val okHttpBuilder = OkHttpClient.Builder()
-
-        return okHttpBuilder.build()
-    }
-
-    fun provideRetrofit(factory: Gson, client: OkHttpClient): Retrofit{
-        return Retrofit.Builder()
+    // Create Retrofit instance
+    single {
+        Retrofit.Builder()
             .baseUrl("https://api.spacexdata.com/v3/")
-            .addConverterFactory(GsonConverterFactory.create(factory))
-            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
-    single {
-        provideGson()
-        provideHttpClient()
-        provideRetrofit(get(), get())
-    }
-
+    // Create retrofit Service
+    single { get<Retrofit>().create(SpacexApiService::class.java) }
 }
