@@ -9,6 +9,7 @@ import com.example.dolares.ui.capsules.CapsulesViewModel
 import com.example.dolares.util.SPACEX_API_URL
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.koinApplication
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,7 +19,7 @@ val appModule = module {
         Room.databaseBuilder(
             androidApplication(),
             SpaceXDatabase::class.java,
-            "space_x_data.db")
+            "space_x_database.db")
             .fallbackToDestructiveMigration()
             .build()
     }

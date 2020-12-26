@@ -2,6 +2,7 @@ package com.example.dolares.data.local.dao
 
 import androidx.room.*
 import com.example.dolares.data.local.model.Capsule
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CapsulesDao {
@@ -14,6 +15,12 @@ interface CapsulesDao {
         deleteALlCapsules()
         insertCapsules(capsules = capsules)
     }
+
+    @Query("Select * From capsules_table")
+    suspend fun getAllCapsulesFlow():Flow<List<Capsule>>
+
+    @Query("Select COUNT(_id) From capsules_table")
+    suspend fun getNumberOfCapsulesFlow():Flow<Int>
 
     @Query("Delete From capsules_table" )
     suspend fun deleteALlCapsules()
