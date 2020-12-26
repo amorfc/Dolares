@@ -8,6 +8,7 @@ import com.example.dolares.data.local.converters.MissionsConverter
 import com.google.gson.annotations.SerializedName
 
 // Single capsule
+@Entity(tableName = "capsules_table")
 data class Capsule(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id")

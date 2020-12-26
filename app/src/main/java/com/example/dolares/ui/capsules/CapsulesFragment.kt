@@ -26,7 +26,7 @@ class CapsulesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(CapsulesViewModel::class.java)
-        // TODO: Use the ViewModel
+
     }
 
 }

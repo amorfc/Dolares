@@ -15,7 +15,7 @@ class DolaresApplication: Application() {
         startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@DolaresApplication)
-            modules(listOf(remoteDataSourceModule))
+            modules(listOf(appModule,remoteDataSourceModule, capsulesModule))
         }
 
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())

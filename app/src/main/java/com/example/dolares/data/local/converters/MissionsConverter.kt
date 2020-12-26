@@ -10,12 +10,12 @@ class MissionsConverter {
     private val gson = Gson()
 
     @TypeConverter
-    fun missionListToString(missions: MutableList<Capsule.Mission>?): String?{
+    fun missionListToJson(missions: MutableList<Capsule.Mission>?): String?{
         return gson.toJson(missions)
     }
 
     @TypeConverter
-    fun StringToMissionList(data: String?):MutableList<Capsule.Mission>?{
+    fun JsonToMissionList(data: String?):MutableList<Capsule.Mission>?{
         if(data == null){
             return Collections.emptyList()
         }
