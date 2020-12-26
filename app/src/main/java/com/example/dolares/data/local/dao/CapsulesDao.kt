@@ -17,10 +17,10 @@ interface CapsulesDao {
     }
 
     @Query("Select * From capsules_table")
-    suspend fun getAllCapsulesFlow():Flow<List<Capsule>>
+    fun getAllCapsulesFlow():Flow<List<Capsule>>
 
     @Query("Select COUNT(_id) From capsules_table")
-    suspend fun getNumberOfCapsulesFlow():Flow<Int>
+    fun getNumberOfCapsulesFlow():Flow<Int>
 
     @Query("Delete From capsules_table" )
     suspend fun deleteALlCapsules()

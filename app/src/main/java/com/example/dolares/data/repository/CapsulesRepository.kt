@@ -6,6 +6,7 @@ import com.example.dolares.data.local.dao.CapsulesDao
 import com.example.dolares.data.local.model.Capsule
 import com.example.dolares.data.remote.SpacexApiService
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 const val TAG = "CapsulesRepository"
@@ -16,7 +17,7 @@ class CapsulesRepository(
     ) {
 
 
-
+    fun getAllCapsulesFlow():Flow<List<Capsule>> = capsulesDao.getAllCapsulesFlow()
 
     suspend fun fetchCapsulesSaveToDb() {
         Log.d(TAG,"fetching capsules from remote")

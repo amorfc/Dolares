@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.example.dolares.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,7 +28,9 @@ class CapsulesFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.refreshData()
+        viewModel.allCapsules.observe(viewLifecycleOwner, {
+            //Data is done
+        })
     }
 
 }
