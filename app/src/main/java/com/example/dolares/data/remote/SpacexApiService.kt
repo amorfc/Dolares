@@ -2,6 +2,7 @@ package com.example.dolares.data.remote
 
 import com.example.dolares.data.local.model.Capsule
 import com.example.dolares.data.local.model.Core
+import com.example.dolares.data.local.model.launch.Launch
 import retrofit2.Response
 import retrofit2.http.GET
 
@@ -12,6 +13,9 @@ interface SpacexApiService {
 
     @GET("cores")
     suspend fun getAllCores(): Response<List<Core>>
+
+    @GET("launched")
+    suspend fun getAllLaunches(): Response<List<Launch>>
 
 
 }
