@@ -5,7 +5,9 @@ import androidx.room.RoomDatabase
 import com.example.dolares.data.local.model.SpaceXDatabase
 import com.example.dolares.data.remote.SpacexApiService
 import com.example.dolares.data.repository.CapsulesRepository
+import com.example.dolares.data.repository.CoresRepository
 import com.example.dolares.ui.capsules.CapsulesViewModel
+import com.example.dolares.ui.cores.CoresViewModel
 import com.example.dolares.util.SPACEX_API_URL
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -53,6 +55,21 @@ val capsulesModule = module {
     //ViewModelInstance of CapsulesViewModel
 
     viewModel { CapsulesViewModel(get()) }
+
+}
+
+val coreModule = module {
+
+    single { get<SpaceXDatabase>().coreDao() }
+
+    single {
+        CoresRepository(
+            get(),
+            get()
+        )
+    }
+
+    viewModel { CoresViewModel(get()) }
 
 }
 
