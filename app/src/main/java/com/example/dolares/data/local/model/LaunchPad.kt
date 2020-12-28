@@ -11,9 +11,6 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "launch_pad_table")
 data class LaunchPad(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    val _id: Long,
     @SerializedName("attempted_launches")
     @ColumnInfo(name = "attempted_launches")
     val attemptedLaunches: Int?,
@@ -21,8 +18,9 @@ data class LaunchPad(
     @ColumnInfo(name = "details")
     val details: String?,
     @SerializedName("id")
-    @ColumnInfo(name = "id")
-    val id: Int?,
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "launchPad_id")
+    val launchPad_id: Int?,
     @SerializedName("location")
     @TypeConverters(LocationConverter::class)
     @ColumnInfo(name = "location")
