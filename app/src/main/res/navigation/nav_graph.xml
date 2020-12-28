@@ -3,11 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/capsulesFragment">
+    app:startDestination="@id/coresFragment">
 
     <fragment
         android:id="@+id/capsulesFragment"
         android:name="com.example.dolares.ui.capsules.CapsulesFragment"
         android:label="capsules_fragment"
         tools:layout="@layout/capsules_fragment" />
+    <fragment
+        android:id="@+id/coresFragment"
+        android:name="com.example.dolares.ui.cores.CoresFragment"
+        android:label="CoresFragment" />
 </navigation>

@@ -31,7 +31,7 @@ data class Core(
     @SerializedName("missions")
     @TypeConverters(MissionsConverter::class)
     @ColumnInfo(name = "missions")
-    val missions: List<Mission?>?,
+    val missions: List<Capsule.Mission?>?,
     @SerializedName("original_launch")
     @ColumnInfo(name = "original_launch")
     val originalLaunch: String?,

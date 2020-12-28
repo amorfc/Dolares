@@ -13,12 +13,13 @@ import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.lang.Exception
 
-const val TAG = "CapsulesRepository"
 
 class CapsulesRepository(
     private val spacexApiService: SpacexApiService,
     private val capsulesDao: CapsulesDao
 ): BaseRepository(){
+
+    private val TAG = "CapsulesRepository"
 
     private var capsulesDataLoading: MutableLiveData<Boolean> = MutableLiveData(false)
 
