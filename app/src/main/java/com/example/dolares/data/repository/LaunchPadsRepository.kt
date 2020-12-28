@@ -1,6 +1,7 @@
 package com.example.dolares.data.repository
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.dolares.data.local.dao.LaunchPadsDao
 import com.example.dolares.data.remote.SpacexApiService
@@ -18,6 +19,9 @@ class LaunchPadsRepository(
     private val launchPadsSnackBarMessage: MutableLiveData<String> = MutableLiveData()
 
     fun getAllLaunchPadsFlowFromDb() = launchPadsDao.getAllLaunchPadsFlow()
+
+    fun getLaunchPadsLoadingStatus(): LiveData<Boolean> = launchPadsLoadingStatus
+    fun getLaunchPadsSnackBarMessage(): MutableLiveData<String> = launchPadsSnackBarMessage
 
     suspend fun fetchLaunchPadsSaveToDb(){
         launchPadsLoadingStatus.postValue(true)

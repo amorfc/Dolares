@@ -9,6 +9,7 @@ import com.example.dolares.data.repository.LaunchPadsRepository
 import com.example.dolares.data.repository.LaunchesRepository
 import com.example.dolares.ui.capsules.CapsulesViewModel
 import com.example.dolares.ui.cores.CoresViewModel
+import com.example.dolares.ui.launch_pads.LaunchPadsViewModel
 import com.example.dolares.ui.launches.LaunchesViewModel
 import com.example.dolares.util.SPACEX_API_URL
 import org.koin.android.ext.koin.androidApplication
@@ -100,7 +101,7 @@ val launchPadsModule = module{
         )
     }
 
-    viewModel { LaunchesViewModel(get()) }
+    viewModel { LaunchPadsViewModel(get()) }
 
 }
 

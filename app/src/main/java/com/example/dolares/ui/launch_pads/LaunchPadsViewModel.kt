@@ -1,5 +1,6 @@
 package com.example.dolares.ui.launch_pads
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,7 +14,13 @@ class LaunchPadsViewModel(
 ) : ViewModel() {
 
     private val allLaunchPads:MutableLiveData<List<LaunchPad>> = MutableLiveData()
+    private val _launchPadsLoadingStatus: LiveData<Boolean> = launchPadsRepository.getLaunchPadsLoadingStatus()
+    private val _launchPadsSnackBarMessage: MutableLiveData<String> = launchPadsRepository.getLaunchPadsSnackBarMessage()
 
+    fun getLaunchPadsLoadingStatus():LiveData<Boolean> = _launchPadsLoadingStatus
+    fun getLaunchPadsSnackBarMessage():LiveData<String> = _launchPadsSnackBarMessage
+
+    fun getAllLaunchPads(): LiveData<List<LaunchPad>> = allLaunchPads
 
     init {
         refreshData()

@@ -13,6 +13,7 @@ class LaunchSiteConverter {
     @TypeConverter
     fun toJson(launchSite: LaunchSite?):String? = gson.toJson(launchSite,type)
 
-    fun fromJson(data:String?):LaunchSite? = gson.fromJson(data,type)
+    @TypeConverter
+    fun fromJson(data:String):LaunchSite? = gson.fromJson(data,type)
 
 }

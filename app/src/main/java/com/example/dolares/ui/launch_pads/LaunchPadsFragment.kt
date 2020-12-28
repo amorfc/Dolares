@@ -6,27 +6,41 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.example.dolares.R
+import com.example.dolares.databinding.LaunchPadsFragmentBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LaunchPadsFragment : Fragment() {
+
+    private val viewModel by viewModel<LaunchPadsViewModel>()
+    private lateinit var binding: LaunchPadsFragmentBinding
 
     companion object {
         fun newInstance() = LaunchPadsFragment()
     }
 
-    private lateinit var viewModel: LaunchPadsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.launch_pads_fragment, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.launch_pads_fragment,
+            container,
+            false
+        )
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LaunchPadsViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        viewModel.getAllLaunchPads().observe(viewLifecycleOwner,{
+            binding.launchPads.text = it.toString()
+        })
+
     }
 
 }

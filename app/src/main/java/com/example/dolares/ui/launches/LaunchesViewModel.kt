@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.dolares.data.local.model.launch.Launch
 import com.example.dolares.data.repository.LaunchesRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,7 +23,9 @@ class LaunchesViewModel(
     private val _launchesSnackBarMessage:MutableLiveData<String> = launchesRepository.getLaunchesSnackBarMessage()
 
     fun getLaunchesLoadingStatus():LiveData<Boolean> = _launchesLoadingStatus
-    fun getLaunchesSnackBarMessage():MutableLiveData<Boolean> = _launchesLoadingStatus
+    fun getLaunchesSnackBarMessage():MutableLiveData<String> = _launchesSnackBarMessage
+
+    fun getAllLaunches():LiveData<List<Launch>> = allLaunches
 
     init {
         refreshData()

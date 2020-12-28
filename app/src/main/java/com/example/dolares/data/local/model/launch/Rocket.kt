@@ -75,9 +75,9 @@ data class Rocket(
             @SerializedName("payload_id")
             val payloadId: String?,
             @SerializedName("payload_mass_kg")
-            val payloadMassKg: Int?,
+            val payloadMassKg: Double?,
             @SerializedName("payload_mass_lbs")
-            val payloadMassLbs: Int?,
+            val payloadMassLbs: Double?,
             @SerializedName("payload_type")
             val payloadType: String?,
             @SerializedName("reused")

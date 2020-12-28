@@ -24,11 +24,11 @@ data class Launch(
     val flightNumber: Int?,
     @SerializedName("launch_date_unix")
     @ColumnInfo(name = "launch_date_unix")
-    val launchDateUnix: Int?,
+    val launchDateUnix: Long?,
     @SerializedName("launch_site")
     @TypeConverters(LaunchSiteConverter::class)
     @ColumnInfo(name = "launch_site")
-    val launchSite: LaunchSite?,
+    val launchSite: LaunchSite,
     @SerializedName("launch_success")
     @ColumnInfo(name = "launch_success")
     val launchSuccess: Boolean?,

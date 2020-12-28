@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/coresFragment">
+    app:startDestination="@id/launchPadsFragment">
 
     <fragment
         android:id="@+id/capsulesFragment"
@@ -14,4 +14,12 @@
         android:id="@+id/coresFragment"
         android:name="com.example.dolares.ui.cores.CoresFragment"
         android:label="CoresFragment" />
+    <fragment
+        android:id="@+id/launchPadsFragment"
+        android:name="com.example.dolares.ui.launch_pads.LaunchPadsFragment"
+        android:label="LaunchPadsFragment" />
+    <fragment
+        android:id="@+id/launchesFragment"
+        android:name="com.example.dolares.ui.launches.LaunchesFragment"
+        android:label="LaunchesFragment" />
 </navigation>
