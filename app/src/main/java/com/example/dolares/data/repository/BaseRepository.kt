@@ -1,4 +1,4 @@
 package com.example.dolares.data.repository
 
-class BaseRepository {
+open class BaseRepository {
 }
