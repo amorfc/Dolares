@@ -12,12 +12,12 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-const val TAG  = "CapsulesViewModel"
 
 class CapsulesViewModel(
     private val capsulesRepository: CapsulesRepository
 ) : ViewModel() {
 
+    private val TAG  = "CapsulesViewModel"
     val allCapsules  = MutableLiveData<List<Capsule>>()
 
     val _capsulesDataLoadingStatus: LiveData<Boolean> = capsulesRepository.getDataLoadingStatus()

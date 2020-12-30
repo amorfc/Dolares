@@ -31,7 +31,7 @@ data class Capsule(
     @SerializedName("missions")
     @TypeConverters(MissionsConverter::class)
     @ColumnInfo(name = "missions")
-    val missions: MutableList<Mission>?,
+    val missions: MutableList<Capsule.Mission>?,
     @SerializedName("landings")
     @ColumnInfo(name = "landings")
     val landings: Int,
@@ -44,7 +44,7 @@ data class Capsule(
     @SerializedName("reuse_count")
     @ColumnInfo(name = "reuse_count")
     val reuseCount: Int
-) {
+): BaseModel(){
     // Model for representation of Capsule missions (JSON array)
     data class Mission(
         @SerializedName("name")

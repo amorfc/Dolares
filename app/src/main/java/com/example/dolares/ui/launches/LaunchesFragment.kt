@@ -38,9 +38,9 @@ class LaunchesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         // TODO: Use the ViewModel
-        viewModel.getAllLaunches().observe(viewLifecycleOwner,{
-            binding.launches.text = it.toString()
-        })
+//        viewModel.getAllLaunches().observe(viewLifecycleOwner,{
+//            binding.launches.text = it.toString()
+//        })
     }
 
 }

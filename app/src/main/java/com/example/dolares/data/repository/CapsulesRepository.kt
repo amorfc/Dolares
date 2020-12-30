@@ -51,7 +51,7 @@ class CapsulesRepository(
     private suspend fun fetchCapsulesSaveToDb() {
         Log.d(TAG,"fetching capsules from remote")
         val response = spacexApiService.getAllCapsules()
-        Log.d(TAG,"${response.isSuccessful}")
+        Log.d(TAG,"Response  -> ${response.isSuccessful}")
         if(response.isSuccessful){
             Log.d(TAG,"Fetched All Capsules Successfully ${response.body()}")
             response.body()?.let { listOfCapsules ->

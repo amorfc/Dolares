@@ -1,6 +1,7 @@
 package com.example.dolares.ui.capsules
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CapsulesFragment : Fragment() {
 
+    private val TAG = "Capsules Fragment"
     private val viewModel by viewModel<CapsulesViewModel>()
 
     lateinit var binding: CapsulesFragmentBinding
@@ -32,16 +34,23 @@ class CapsulesFragment : Fragment() {
             false
         )
 
+        binding.viewModel = viewModel
+        val adapter = CapsulesAdapter()
+        binding.capsulesRV.adapter = adapter
+//        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+
         return binding.root
 
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.allCapsules.observe(viewLifecycleOwner, {
-            //Data is done
-            binding.test.text = it.toString()
-        })
+//        viewModel.allCapsules.observe(viewLifecycleOwner, {
+//            //Data is done
+//            Log.i(TAG,it.toString())
+//
+//        })
 
         viewModel._capsulesDataLoadingStatus.observe(viewLifecycleOwner, {
             //Capsules Data Loading Status

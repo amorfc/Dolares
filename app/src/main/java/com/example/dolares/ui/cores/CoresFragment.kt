@@ -40,9 +40,9 @@ class CoresFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel.getAllCores().observe(viewLifecycleOwner,{
-            binding.coresText.text = it.toString()
-        })
+//        viewModel.getAllCores().observe(viewLifecycleOwner,{
+//            binding.coresText.text = it.toString()
+//        })
 
     }
 
