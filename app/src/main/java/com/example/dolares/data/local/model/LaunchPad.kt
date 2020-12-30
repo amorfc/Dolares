@@ -20,7 +20,7 @@ data class LaunchPad(
     @SerializedName("id")
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "launchPad_id")
-    val launchPad_id: Int?,
+    override val _id: Long?,
     @SerializedName("location")
     @TypeConverters(LocationConverter::class)
     @ColumnInfo(name = "location")
@@ -44,7 +44,7 @@ data class LaunchPad(
     @SerializedName("wikipedia")
     @ColumnInfo(name = "wikipedia")
     val wikipedia: String?
-) {
+): BaseModel() {
     data class Location(
         @SerializedName("latitude")
         val latitude: Double?,

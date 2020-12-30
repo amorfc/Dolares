@@ -12,7 +12,7 @@ import com.google.gson.annotations.SerializedName
 data class Core(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id")
-    val _id:Long,
+    override val _id:Long?,
     @SerializedName("asds_attempts")
     @ColumnInfo(name = "asds_attempts")
     val asdsAttempts: Int?,
@@ -53,7 +53,7 @@ data class Core(
     @SerializedName("water_landing")
     @ColumnInfo(name = "water_landing")
     val waterLanding: Boolean?
-) {
+): BaseModel() {
     data class Mission(
         @SerializedName("flight")
         val flight: Int?,

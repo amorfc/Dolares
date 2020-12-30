@@ -33,7 +33,8 @@ class CoresFragment : Fragment() {
             container,
             false
         )
-
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
         return binding.root
     }
 

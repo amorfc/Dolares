@@ -10,7 +10,7 @@ import com.example.dolares.data.local.dao.LaunchPadsDao
 import com.example.dolares.data.local.dao.LaunchesDao
 import com.example.dolares.data.local.model.launch.Launch
 
-@Database(entities = [Capsule::class,Core::class,Launch::class,LaunchPad::class],version = 2)
+@Database(entities = [Capsule::class,Core::class,Launch::class,LaunchPad::class],version = 3)
 
 @TypeConverters(value=[
     MissionsConverter::class,

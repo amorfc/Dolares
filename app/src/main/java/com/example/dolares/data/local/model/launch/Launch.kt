@@ -9,13 +9,14 @@ import com.example.dolares.data.local.converters.JsonArrayToStringConverter
 import com.example.dolares.data.local.converters.LaunchSiteConverter
 import com.example.dolares.data.local.converters.LinksConverter
 import com.example.dolares.data.local.converters.RocketConverter
+import com.example.dolares.data.local.model.BaseModel
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "launch_table")
 data class Launch(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id")
-    val _id: Long,
+    override val _id: Long?,
     @SerializedName("details")
     @ColumnInfo(name = "details")
     val details: String?,
@@ -56,7 +57,7 @@ data class Launch(
     @SerializedName("upcoming")
     @ColumnInfo(name = "upcoming")
     val upcoming: Boolean?
-) {
+): BaseModel() {
 
     data class Links(
         @SerializedName("article_link")

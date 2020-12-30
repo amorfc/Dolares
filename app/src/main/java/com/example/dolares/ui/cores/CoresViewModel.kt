@@ -14,7 +14,7 @@ class CoresViewModel(
     private val coresRepository: CoresRepository
 ) : ViewModel() {
 
-    private val allCores:MutableLiveData<List<Core>> = MutableLiveData<List<Core>>()
+    val allCores:MutableLiveData<List<Core>> = MutableLiveData<List<Core>>()
 
     init {
         refreshCoreData()

@@ -31,15 +31,16 @@ class LaunchPadsFragment : Fragment() {
             container,
             false
         )
+
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-//        viewModel.getAllLaunchPads().observe(viewLifecycleOwner,{
-//            binding.launchPads.text = it.toString()
-//        })
 
     }
 

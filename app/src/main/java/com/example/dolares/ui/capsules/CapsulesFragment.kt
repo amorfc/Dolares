@@ -35,9 +35,6 @@ class CapsulesFragment : Fragment() {
         )
 
         binding.viewModel = viewModel
-        val adapter = CapsulesAdapter()
-        binding.capsulesRV.adapter = adapter
-//        binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
         return binding.root

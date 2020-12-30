@@ -12,7 +12,7 @@ import com.google.gson.annotations.SerializedName
 data class Capsule(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id")
-    val _id: Long,
+    override val _id: Long,
     @SerializedName("capsule_serial")
     @ColumnInfo(name = "capsule_serial")
     val capsuleSerial: String,
