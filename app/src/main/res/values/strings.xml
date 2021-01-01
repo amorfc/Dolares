@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Dolares</string>
+    <string name="Capsule">Capsule</string>
+    <string name="Settings">Settings</string>
+    <string name="Cores">Cores</string>
+    <string name="LauncPad">LauncPad</string>
+    <string name="Launches">Launches</string>
+    <string name="Launchpads">Launchpads</string>
 </resources>
