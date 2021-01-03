@@ -6,4 +6,15 @@
     <string name="LauncPad">LauncPad</string>
     <string name="Launches">Launches</string>
     <string name="Launchpads">Launchpads</string>
+    <string name="LogOut">LogOut</string>
+    <string name="save_changes">saveChanges</string>
+    <string name="Password">Password</string>
+    <string name="Email">Email</string>
+    <string name="changeForName">changeForName</string>
+    <string name="Name">Name</string>
+    <string name="userName">UserName</string>
+    <string name="Hello">Hello</string>
+    <string name="this_is_a_sample_text">This is a Sample Text</string>
+    <string name="launchImage">launchImage</string>
+    <string name="launchlistImage" />
 </resources>

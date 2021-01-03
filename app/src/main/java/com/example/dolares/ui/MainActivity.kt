@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.get
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.dolares.R
@@ -31,16 +32,16 @@ class MainActivity : AppCompatActivity() {
             // R.id.registerFragment -> {
             //        bottomNavigationView.visibility = View.GONE
                // }
-              R.id.CoresFragment -> {
+              R.id.Cores -> {
                     bottomNavigationView.visibility = View.VISIBLE
                 }
-                R.id.CapsuleFragment -> {
+                R.id.Capsule -> {
                    bottomNavigationView.visibility = View.VISIBLE
                 }
-                R.id.settingsFragment -> {
+                R.id.Settings -> {
                    bottomNavigationView.visibility = View.VISIBLE
                 }
-                R.id.launchPadsFragment -> {
+                R.id.Launches -> {
                         bottomNavigationView.visibility = View.VISIBLE
                           }
            }
