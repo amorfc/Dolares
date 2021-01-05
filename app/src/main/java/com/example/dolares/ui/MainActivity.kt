@@ -32,18 +32,14 @@ class MainActivity : AppCompatActivity() {
             // R.id.registerFragment -> {
             //        bottomNavigationView.visibility = View.GONE
                // }
-              R.id.Cores -> {
-                    bottomNavigationView.visibility = View.VISIBLE
+              R.id.coresFragment -> {
                 }
-                R.id.Capsule -> {
+                R.id.capsulesFragment -> {
                    bottomNavigationView.visibility = View.VISIBLE
                 }
-                R.id.Settings -> {
-                   bottomNavigationView.visibility = View.VISIBLE
-                }
-                R.id.Launches -> {
+                R.id.launchesFragment -> {
                         bottomNavigationView.visibility = View.VISIBLE
-                          }
+                }
            }
         }
     }
