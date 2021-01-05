@@ -67,7 +67,7 @@
                     android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{core.originalLaunchUnix}"
+                    android:text="@{core.originalLaunchUnix.toString()}"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:tooltipText="SLKDHFSJŞDKFSDLF" />

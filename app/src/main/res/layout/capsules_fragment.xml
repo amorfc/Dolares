@@ -15,7 +15,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.capsules.CapsulesFragment">
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/capsulesRV"
             android:layout_width="match_parent"

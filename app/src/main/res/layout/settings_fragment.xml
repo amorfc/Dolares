@@ -4,13 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
 
-        <variable
-            name="settingsViewModel"
-            type="" />
-
-        <variable
-            name="settingsForm"
-            type="" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

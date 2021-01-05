@@ -4,7 +4,7 @@
 
     <data>
         <variable
-            name="Launch"
+            name="launch"
             type="com.example.dolares.data.local.model.launch.Launch" />
     </data>
 
@@ -29,7 +29,7 @@
                 android:id="@+id/flightNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{Launch.flightNumber.toString()}"
+                android:text="@{launch.flightNumber.toString()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

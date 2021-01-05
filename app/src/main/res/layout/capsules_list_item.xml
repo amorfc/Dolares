@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
+    <data>
 
-            <data>
-
-                <variable
-                    name="capsule"
-                    type="com.example.dolares.data.local.model.Capsule" />
-            </data>
-
-
+        <variable
+            name="capsule"
+            type="com.example.dolares.data.local.model.Capsule" />
+    </data>
 
 
     <androidx.cardview.widget.CardView
@@ -21,15 +17,15 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:clickable="true"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="3dp"
         android:foreground="@color/grey"
-        >
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp">
+
         <LinearLayout
             android:id="@+id/Linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/model"
@@ -44,42 +40,42 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/Linear1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/isActive"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/Linear1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="200dp"
-                android:text="@{capsule.status}"
-                android:textAlignment="viewStart"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:tooltipText="lkdflkdfd" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{capsule.capsuleSerial}"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:tooltipText="LKHSDFHDJŞKDAŞSLDASD" />
+                <TextView
+                    android:id="@+id/isActive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="200dp"
+                    android:text="@{capsule.status}"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:tooltipText="lkdflkdfd" />
 
-            <TextView
-                android:id="@+id/date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{capsule.originalLaunch}"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:tooltipText="SLKDHFSJŞDKFSDLF" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{capsule.capsuleSerial}"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:tooltipText="LKHSDFHDJŞKDAŞSLDASD" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{capsule.originalLaunch}"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:tooltipText="SLKDHFSJŞDKFSDLF" />
+            </LinearLayout>
         </LinearLayout>
 
 
