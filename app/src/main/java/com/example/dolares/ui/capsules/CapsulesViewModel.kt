@@ -19,11 +19,7 @@ class CapsulesViewModel(
     private val TAG  = "CapsulesViewModel"
     val allCapsules  = MutableLiveData<List<Capsule>>()
 
-    val _capsulesDataLoadingStatus: LiveData<Boolean> = capsulesRepository.getDataLoadingStatus()
-    val _capsulesSnackBarMessage: LiveData<String> = capsulesRepository.getCapsulesSnackBarMessage()
-
     init {
-        refreshData()
         viewModelScope.launch(Dispatchers.IO){
             capsulesRepository.getAllCapsulesFlow()
                 .collect{

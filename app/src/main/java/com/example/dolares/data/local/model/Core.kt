@@ -14,7 +14,7 @@ data class Core(
     @PrimaryKey(autoGenerate = false)
     @SerializedName("id")
     @ColumnInfo(name = "id")
-    val id: String,
+    override val id: String,
     @SerializedName("asds_attempts")
     @ColumnInfo(name = "asds_attempts")
     val asdsAttempts: Int?,
@@ -46,4 +46,4 @@ data class Core(
     @SerializedName("status")
     @ColumnInfo(name = "status")
     val status: String?
-)
+):BaseModel()

@@ -1,10 +1,9 @@
 package com.example.dolares.data.repository
 
-sealed class Result<T>(
-    var data:T? = null,
-    var message:String? = null
-) {
-    class Success<T>(data: T):Result<T>(data = data)
-    class Loading<T>(data: T?):Result<T>(data = data)
-    class Error<T>(message: String, data: T? = null):Result<T>(message = message,data = data)
+import java.lang.Exception
+
+sealed class Result<out T>{
+    data class Success<out T>(val data: T):Result<T>()
+    data class Loading(val isLoading:Boolean):Result<Nothing>()
+    data class Error<T>(val message: String? = null, val exception: Exception? = null):Result<T>()
 }

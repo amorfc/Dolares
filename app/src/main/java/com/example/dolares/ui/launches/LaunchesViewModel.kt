@@ -28,7 +28,6 @@ class LaunchesViewModel(
     fun getAllLaunches():LiveData<List<Launch>> = allLaunches
 
     init {
-        refreshData()
         viewModelScope.launch(Dispatchers.IO){
             launchesRepository.getAllLaunchesFlowFromDb()
                 .collect { allLaunches.postValue(it)

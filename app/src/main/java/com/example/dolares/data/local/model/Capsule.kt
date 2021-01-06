@@ -14,7 +14,7 @@ data class Capsule(
     @PrimaryKey(autoGenerate = false)
     @SerializedName("id")
     @ColumnInfo(name = "id")
-    val id: String,
+    override val id: String,
     @SerializedName("land_landings")
     @ColumnInfo(name = "land_landings")
     val landLandings: Int?,
@@ -40,4 +40,4 @@ data class Capsule(
     @SerializedName("water_landings")
     @ColumnInfo(name = "water_landings")
     val waterLandings: Int?
-)
+):BaseModel()

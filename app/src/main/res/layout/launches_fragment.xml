@@ -16,16 +16,16 @@
         tools:context=".ui.launches.LaunchesFragment">
 
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/launchesRV"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            app:submitNewList="@{viewModel.allLaunches}"-->
-<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            tools:listitem="@layout/launches_list_item" />-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/launchesRV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:submitNewList="@{viewModel.allLaunches}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/launches_list_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

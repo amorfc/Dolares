@@ -24,7 +24,6 @@ class LaunchPadsViewModel(
     fun getAllLaunchPads(): LiveData<List<LaunchPad>> = allLaunchPads
 
     init {
-        refreshData()
         viewModelScope.launch {
             launchPadsRepository.getAllLaunchPadsFlowFromDb()
                 .collect { allLaunchPads.postValue(it)

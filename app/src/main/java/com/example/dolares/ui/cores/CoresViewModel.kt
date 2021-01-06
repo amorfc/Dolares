@@ -17,7 +17,6 @@ class CoresViewModel(
     val allCores:MutableLiveData<List<Core>> = MutableLiveData<List<Core>>()
 
     init {
-        refreshCoreData()
         viewModelScope.launch(Dispatchers.IO){
             coresRepository.getAllCoresFlowFromDb()
                 .collect { allCores.postValue(it) }

@@ -45,6 +45,7 @@ class CapsulesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+
 //        viewModel._capsulesDataLoadingStatus.observe(viewLifecycleOwner, {
 //            //Capsules Data Loading Status
 //        })

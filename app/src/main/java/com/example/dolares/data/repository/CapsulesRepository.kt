@@ -2,7 +2,6 @@ package com.example.dolares.data.repository
 
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.dolares.data.local.dao.CapsulesDao
 import com.example.dolares.data.local.model.Capsule
@@ -21,45 +20,39 @@ class CapsulesRepository(
 
     private val TAG = "CapsulesRepository"
 
-    private var capsulesDataLoading: MutableLiveData<Boolean> = MutableLiveData(false)
-
-    private var capsulesSnackBar: MutableLiveData<String> = MutableLiveData()
+    private var capsulesDataStatus: MutableLiveData<Result<Any>> = MutableLiveData<Result<Any>>()
 
     fun getAllCapsulesFlow():Flow<List<Capsule>> = capsulesDao.getAllCapsulesFlow()
 
-    fun getDataLoadingStatus(): LiveData<Boolean> = capsulesDataLoading
-    fun getCapsulesSnackBarMessage(): LiveData<String> = capsulesSnackBar
-
-
 
     suspend fun executeRefreshData(){
-        capsulesDataLoading.value = true
+        capsulesDataStatus.value = Result.Loading(true)
         withContext(Dispatchers.IO){
             try {
-                fetchCapsulesSaveToDb()
+                fetchAllCapsulesAndSaveToDb()
             }catch (e:Exception){
                 when(e){
-                    is IOException -> capsulesSnackBar.postValue("Network Problem Occurred")
+                    is IOException -> capsulesDataStatus.postValue(Result.Error(exception = e))
                     else -> {
-                        capsulesSnackBar.postValue("Unexpected Problem Occurred")
+                        capsulesDataStatus.postValue(Result.Error(message = "Unexpected Problem Occurred"))
                         Log.i(TAG,"Data couldn't refresh ${e.message}")
                     }
                 }
             }
-            capsulesDataLoading.postValue(false)
+            capsulesDataStatus.value = Result.Loading(false)
         }
     }
 
-    private suspend fun fetchCapsulesSaveToDb() {
+    private suspend fun fetchAllCapsulesAndSaveToDb(){
         Log.d(TAG,"fetching capsules from remote")
         val response = spacexApiService.getAllCapsules()
         Log.d(TAG,"Response  -> ${response.isSuccessful}")
         if(response.isSuccessful){
             Log.d(TAG,"Fetched All Capsules Successfully ${response.body()}")
             response.body()?.let { listOfCapsules ->
-                capsulesDao.replaceCapsulesData(listOfCapsules)
+                capsulesDao.insertCapsules(listOfCapsules)
             }
         }else Log.e(TAG,"Unsuccessfully fetched data ${response.errorBody()}")
     }
-
+    
 }
