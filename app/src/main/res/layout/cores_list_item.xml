@@ -26,16 +26,6 @@
             android:orientation="horizontal" >
 
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{core.reuseCount.toString()}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <LinearLayout
                 android:id="@+id/Linear1"
                 android:layout_width="match_parent"
@@ -43,15 +33,14 @@
                 android:orientation="vertical" >
 
                 <TextView
-                    android:id="@+id/isActive"
+                    android:id="@+id/sss"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="200dp"
-                    android:text="@{core.status}"
-                    android:textAlignment="viewStart"
+                    android:text="@{core.coreSerial}"
                     android:textColor="@color/black"
                     android:textSize="20sp"
-                    android:tooltipText="lkdflkdfd" />
+                    android:textStyle="bold"
+                    android:tooltipText="LKHSDFHDJŞKDAŞSLDASD" />
 
                 <TextView
                     android:id="@+id/tip"

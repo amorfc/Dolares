@@ -12,6 +12,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.dolares"
+        vectorDrawables.useSupportLibrary=true
         minSdkVersion 29
         targetSdkVersion 30
         versionCode 1

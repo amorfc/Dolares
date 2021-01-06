@@ -17,4 +17,6 @@
     <string name="this_is_a_sample_text">This is a Sample Text</string>
     <string name="launchImage">launchImage</string>
     <string name="launchlistImage" />
+    <string name="this_is_a_datetext">dateText</string>
+    <string name="this_is_a_modelSampleText">modelSampleText</string>
 </resources>

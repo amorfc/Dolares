@@ -25,29 +25,29 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/flightNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{launch.flightNumber.toString()}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/model"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/this_is_a_sample_text"
+                android:text="@{launch.missionName}"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:tooltipText="LKHSDFHDJŞKDAŞSLDASD" />
 
             <TextView
+                android:id="@+id/models"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{launch.missionId.toString()}"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:tooltipText="SLKDHFSJŞDKFSDLF" />
+            <TextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/this_is_a_sample_text"
+                android:text="@{launch._id.toString()}"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:tooltipText="SLKDHFSJŞDKFSDLF" />
