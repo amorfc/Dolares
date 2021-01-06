@@ -1,11 +1,13 @@
 package com.example.dolares.data.repository
 
 
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.dolares.data.local.dao.CapsulesDao
 import com.example.dolares.data.local.model.Capsule
 import com.example.dolares.data.remote.SpacexApiService
+import com.example.dolares.util.CAPSULE_DATA_REFRESH_KEY
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
@@ -15,10 +17,12 @@ import java.lang.Exception
 
 class CapsulesRepository(
     private val spacexApiService: SpacexApiService,
-    private val capsulesDao: CapsulesDao
-): BaseRepository(){
+    private val capsulesDao: CapsulesDao,
+    sharedPreferences: SharedPreferences
+): BaseRepository(sharedPreferences){
 
-    private val TAG = "CapsulesRepository"
+    override val TAG = "CapsulesRepository"
+    private val REFRESH_KEY = CAPSULE_DATA_REFRESH_KEY
 
     private var capsulesDataStatus: MutableLiveData<Result<Any>> = MutableLiveData<Result<Any>>()
 
@@ -43,6 +47,19 @@ class CapsulesRepository(
         }
     }
 
+    suspend fun refreshData(refresh:Boolean = false){
+        if(!refresh){
+            val isNeeded = withContext(Dispatchers.IO){
+                checkIfDataRefreshNeeded(REFRESH_KEY)
+            }
+            if(!isNeeded){
+                Log.i(TAG,"Dont needed refresh")
+                return
+            }
+        }
+        executeRefreshData()
+    }
+
     private suspend fun fetchAllCapsulesAndSaveToDb(){
         Log.d(TAG,"fetching capsules from remote")
         val response = spacexApiService.getAllCapsules()
@@ -52,6 +69,7 @@ class CapsulesRepository(
             response.body()?.let { listOfCapsules ->
                 capsulesDao.insertCapsules(listOfCapsules)
             }
+            saveDataRefreshTime(REFRESH_KEY)
         }else Log.e(TAG,"Unsuccessfully fetched data ${response.errorBody()}")
     }
     

@@ -19,11 +19,6 @@ class LaunchesViewModel(
 
     val allLaunches: MutableLiveData<List<Launch>> = MutableLiveData()
 
-    private val _launchesLoadingStatus:LiveData<Boolean> = launchesRepository.getLaunchesLoadingStatus()
-    private val _launchesSnackBarMessage:MutableLiveData<String> = launchesRepository.getLaunchesSnackBarMessage()
-
-    fun getLaunchesLoadingStatus():LiveData<Boolean> = _launchesLoadingStatus
-    fun getLaunchesSnackBarMessage():MutableLiveData<String> = _launchesSnackBarMessage
 
     fun getAllLaunches():LiveData<List<Launch>> = allLaunches
 

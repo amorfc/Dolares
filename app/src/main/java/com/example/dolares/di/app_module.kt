@@ -1,5 +1,6 @@
 package com.example.dolares.di
 
+import android.preference.PreferenceManager
 import androidx.room.Room
 import com.example.dolares.data.local.model.SpaceXDatabase
 import com.example.dolares.data.remote.SpacexApiService
@@ -28,6 +29,9 @@ val appModule = module {
             .fallbackToDestructiveMigration()
             .build()
     }
+
+    single { PreferenceManager.getDefaultSharedPreferences(get()) }
+
 }
 
 val remoteDataSourceModule = module {
@@ -51,6 +55,7 @@ val capsulesModule = module {
     single {
         CapsulesRepository(
             get(),
+            get(),
             get()
         )
     }
@@ -68,6 +73,7 @@ val coresModule = module {
     single {
         CoresRepository(
             get(),
+            get(),
             get()
         )
     }
@@ -81,6 +87,7 @@ val launchesModule = module {
 
     single {
         LaunchesRepository(
+            get(),
             get(),
             get()
         )
@@ -96,6 +103,7 @@ val launchPadsModule = module{
 
     single {
         LaunchPadsRepository(
+            get(),
             get(),
             get()
         )

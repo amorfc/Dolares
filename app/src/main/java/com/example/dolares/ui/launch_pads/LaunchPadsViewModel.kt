@@ -15,11 +15,6 @@ class LaunchPadsViewModel(
 ) : ViewModel() {
 
     val allLaunchPads:MutableLiveData<List<LaunchPad>> = MutableLiveData()
-    private val _launchPadsLoadingStatus: LiveData<Boolean> = launchPadsRepository.getLaunchPadsLoadingStatus()
-    private val _launchPadsSnackBarMessage: MutableLiveData<String> = launchPadsRepository.getLaunchPadsSnackBarMessage()
-
-    fun getLaunchPadsLoadingStatus():LiveData<Boolean> = _launchPadsLoadingStatus
-    fun getLaunchPadsSnackBarMessage():LiveData<String> = _launchPadsSnackBarMessage
 
     fun getAllLaunchPads(): LiveData<List<LaunchPad>> = allLaunchPads
 

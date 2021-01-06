@@ -1,5 +1,6 @@
 package com.example.dolares.data.repository
 
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,21 +11,18 @@ import kotlinx.coroutines.withContext
 
 class LaunchPadsRepository(
     private val spacexApiService: SpacexApiService,
-    private val launchPadsDao: LaunchPadsDao
-):BaseRepository() {
+    private val launchPadsDao: LaunchPadsDao,
+    sharedPreferences: SharedPreferences
+):BaseRepository(sharedPreferences) {
 
-    private val TAG = "LaunchPads Repository"
+    override val TAG = "LaunchPads Repository"
 
     private val launchPadsLoadingStatus: MutableLiveData<Boolean> = MutableLiveData(false)
     private val launchPadsSnackBarMessage: MutableLiveData<String> = MutableLiveData()
 
     fun getAllLaunchPadsFlowFromDb() = launchPadsDao.getAllLaunchPadsFlow()
 
-    fun getLaunchPadsLoadingStatus(): LiveData<Boolean> = launchPadsLoadingStatus
-    fun getLaunchPadsSnackBarMessage(): MutableLiveData<String> = launchPadsSnackBarMessage
-
     suspend fun fetchLaunchPadsSaveToDb(){
-        launchPadsLoadingStatus.postValue(true)
         withContext(Dispatchers.IO){
             val response = spacexApiService.getAllLaunchPads()
             Log.d(TAG,"Response  -> ${response.isSuccessful}")
@@ -33,12 +31,8 @@ class LaunchPadsRepository(
                     Log.d(TAG,"Fetched All Pads Successfully ${response.body()}")
                     launchPadsDao.replaceAllLaunchPads(it)
                 }
-            }else{
-                launchPadsSnackBarMessage.postValue("Network Problem Occurred")
-                Log.i(TAG,"Unexpected Network Issue")
             }
         }
-        launchPadsLoadingStatus.postValue(false)
     }
 
 }
