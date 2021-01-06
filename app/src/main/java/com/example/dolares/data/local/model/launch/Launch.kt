@@ -5,86 +5,157 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.example.dolares.data.local.converters.JsonArrayToStringConverter
-import com.example.dolares.data.local.converters.LaunchSiteConverter
-import com.example.dolares.data.local.converters.LinksConverter
-import com.example.dolares.data.local.converters.RocketConverter
-import com.example.dolares.data.local.model.BaseModel
+import com.example.dolares.data.local.converters.LinksToJsonConverter
+import com.example.dolares.data.local.converters.ListOfStringToJsonConverter
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "launch_table")
+@Entity(tableName = "launches_table")
 data class Launch(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    override val _id: Long?,
-    @SerializedName("details")
+    @PrimaryKey(autoGenerate = false)
+    @ColumnInfo(name = "id")
+    @SerializedName("id")
+    val id: String,
+    @ColumnInfo(name = "auto_update")
+    @SerializedName("auto_update")
+    val autoUpdate: Boolean?,
+    @TypeConverters(ListOfStringToJsonConverter::class)
+    @ColumnInfo(name = "capsules")
+    @SerializedName("capsules")
+    val capsules: List<String?>?,
+//    @ColumnInfo(name = "cores")
+//    @SerializedName("cores")
+//    val cores: List<Core?>?,
+//    @ColumnInfo(name = "crew")
+//    @SerializedName("crew")
+//    val crew: List<Any?>?,
+    @ColumnInfo(name = "date_local")
+    @SerializedName("date_local")
+    val dateLocal: String?,
+    @ColumnInfo(name = "date_precision")
+    @SerializedName("date_precision")
+    val datePrecision: String?,
+    @ColumnInfo(name = "date_unix")
+    @SerializedName("date_unix")
+    val dateUnix: Int?,
+    @ColumnInfo(name = "date_utc")
+    @SerializedName("date_utc")
+    val dateUtc: String?,
     @ColumnInfo(name = "details")
+    @SerializedName("details")
     val details: String?,
-    @SerializedName("flight_number")
+//    @ColumnInfo(name = "failures")
+//    @SerializedName("failures")
+//    val failures: List<Any?>?,
+//    @ColumnInfo(name = "fairings")
+//    @SerializedName("fairings")
+//    val fairings: Any?,
     @ColumnInfo(name = "flight_number")
+    @SerializedName("flight_number")
     val flightNumber: Int?,
-    @SerializedName("launch_date_unix")
-    @ColumnInfo(name = "launch_date_unix")
-    val launchDateUnix: Long?,
-    @SerializedName("launch_site")
-    @TypeConverters(LaunchSiteConverter::class)
-    @ColumnInfo(name = "launch_site")
-    val launchSite: LaunchSite,
-    @SerializedName("launch_success")
-    @ColumnInfo(name = "launch_success")
-    val launchSuccess: Boolean?,
-    @SerializedName("launch_window")
-    @ColumnInfo(name = "launch_window")
-    val launchWindow: Int?,
-    @SerializedName("launch_year")
-    @ColumnInfo(name = "launch_year")
-    val launchYear: String?,
-    @SerializedName("links")
-    @TypeConverters(LinksConverter::class)
+    @ColumnInfo(name = "launchpad")
+    @SerializedName("launchpad")
+    val launchpad: String?,
+    @TypeConverters(LinksToJsonConverter::class)
     @ColumnInfo(name = "links")
+    @SerializedName("links")
     val links: Links?,
-    @SerializedName("mission_id")
-    @TypeConverters(JsonArrayToStringConverter::class)
-    @ColumnInfo(name = "mission_id")
-    val missionId: MutableList<String>?,
-    @SerializedName("mission_name")
-    @ColumnInfo(name = "mission_name")
-    val missionName: String?,
-    @SerializedName("rocket")
-    @TypeConverters(RocketConverter::class)
+    @ColumnInfo(name = "name")
+    @SerializedName("name")
+    val name: String?,
+    @ColumnInfo(name = "net")
+    @SerializedName("net")
+    val net: Boolean?,
+    @TypeConverters(ListOfStringToJsonConverter::class)
+    @ColumnInfo(name = "payloads")
+    @SerializedName("payloads")
+    val payloads: List<String?>?,
     @ColumnInfo(name = "rocket")
-    val rocket: Rocket?,
-    @SerializedName("upcoming")
+    @SerializedName("rocket")
+    val rocket: String?,
+//    @ColumnInfo(name = "ships")
+//    @SerializedName("ships")
+//    val ships: List<Any?>?,
+    @ColumnInfo(name = "static_fire_date_unix")
+    @SerializedName("static_fire_date_unix")
+    val staticFireDateUnix: Int?,
+    @ColumnInfo(name = "static_fire_date_utc")
+    @SerializedName("static_fire_date_utc")
+    val staticFireDateUtc: String?,
+    @ColumnInfo(name = "success")
+    @SerializedName("success")
+    val success: Boolean?,
+    @ColumnInfo(name = "tdb")
+    @SerializedName("tdb")
+    val tdb: Boolean?,
     @ColumnInfo(name = "upcoming")
-    val upcoming: Boolean?
-): BaseModel() {
+    @SerializedName("upcoming")
+    val upcoming: Boolean?,
+    @ColumnInfo(name = "window")
+    @SerializedName("window")
+    val window: Int?
+) {
+    data class Core(
+        @SerializedName("core")
+        val core: String?,
+        @SerializedName("flight")
+        val flight: Int?,
+        @SerializedName("gridfins")
+        val gridfins: Boolean?,
+        @SerializedName("landing_attempt")
+        val landingAttempt: Boolean?,
+        @SerializedName("landing_success")
+        val landingSuccess: Boolean?,
+        @SerializedName("landing_type")
+        val landingType: String?,
+        @SerializedName("landpad")
+        val landpad: String?,
+        @SerializedName("legs")
+        val legs: Boolean?,
+        @SerializedName("reused")
+        val reused: Boolean?
+    )
 
     data class Links(
-        @SerializedName("article_link")
-        val articleLink: String?,
-        @SerializedName("flickr_images")
-        val flickrImages: List<Any?>?,
-        @SerializedName("mission_patch")
-        val missionPatch: String?,
-        @SerializedName("mission_patch_small")
-        val missionPatchSmall: String?,
+        @SerializedName("article")
+        val article: String?,
+        @SerializedName("flickr")
+        val flickr: Flickr?,
+        @SerializedName("patch")
+        val patch: Patch?,
         @SerializedName("presskit")
-        val presskit: Any?,
-        @SerializedName("reddit_campaign")
-        val redditCampaign: Any?,
-        @SerializedName("reddit_launch")
-        val redditLaunch: Any?,
-        @SerializedName("reddit_media")
-        val redditMedia: Any?,
-        @SerializedName("reddit_recovery")
-        val redditRecovery: Any?,
-        @SerializedName("video_link")
-        val videoLink: String?,
+        val presskit: String?,
+        @SerializedName("reddit")
+        val reddit: Reddit?,
+        @SerializedName("webcast")
+        val webcast: String?,
         @SerializedName("wikipedia")
         val wikipedia: String?,
         @SerializedName("youtube_id")
         val youtubeId: String?
-    )
+    ) {
+        data class Flickr(
+            @SerializedName("original")
+            val original: List<String?>?,
+            @SerializedName("small")
+            val small: List<Any?>?
+        )
 
+        data class Patch(
+            @SerializedName("large")
+            val large: String?,
+            @SerializedName("small")
+            val small: String?
+        )
 
+        data class Reddit(
+            @SerializedName("campaign")
+            val campaign: String?,
+            @SerializedName("launch")
+            val launch: String?,
+            @SerializedName("media")
+            val media: String?,
+            @SerializedName("recovery")
+            val recovery: Any?
+        )
+    }
 }

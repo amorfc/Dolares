@@ -1,55 +1,43 @@
 package com.example.dolares.data.local.model
 
+
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.example.dolares.data.local.converters.MissionsConverter
+import com.example.dolares.data.local.converters.LaunchesListToStringConverter
+import com.example.dolares.data.local.converters.ListOfStringToJsonConverter
 import com.google.gson.annotations.SerializedName
 
-// Single capsule
 @Entity(tableName = "capsules_table")
 data class Capsule(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    override val _id: Long,
-    @SerializedName("capsule_serial")
-    @ColumnInfo(name = "capsule_serial")
-    val capsuleSerial: String,
-    @SerializedName("capsule_id")
-    @ColumnInfo(name = "capsule_id")
-    val capsuleId: String,
-    @SerializedName("status")
-    @ColumnInfo(name = "status")
-    val status: String,
-    @SerializedName("original_launch")
-    @ColumnInfo(name = "original_launch")
-    val originalLaunch: String?,
-    @SerializedName("original_launch_unix")
-    @ColumnInfo(name = "original_launch_unix")
-    val originalLaunchUnix: Long?,
-    @SerializedName("missions")
-    @TypeConverters(MissionsConverter::class)
-    @ColumnInfo(name = "missions")
-    val missions: MutableList<Capsule.Mission>?,
-    @SerializedName("landings")
-    @ColumnInfo(name = "landings")
-    val landings: Int,
-    @SerializedName("type")
-    @ColumnInfo(name = "type")
-    val type: String,
-    @SerializedName("details")
-    @ColumnInfo(name = "details")
-    val details: String?,
+    @PrimaryKey(autoGenerate = false)
+    @SerializedName("id")
+    @ColumnInfo(name = "id")
+    val id: String,
+    @SerializedName("land_landings")
+    @ColumnInfo(name = "land_landings")
+    val landLandings: Int?,
+    @SerializedName("last_update")
+    @ColumnInfo(name = "last_update")
+    val lastUpdate: String?,
+    @TypeConverters(ListOfStringToJsonConverter::class)
+    @SerializedName("launches")
+    @ColumnInfo(name = "launches")
+    val launches: List<String?>?,
     @SerializedName("reuse_count")
     @ColumnInfo(name = "reuse_count")
-    val reuseCount: Int
-): BaseModel(){
-    // Model for representation of Capsule missions (JSON array)
-    data class Mission(
-        @SerializedName("name")
-        val name: String,
-        @SerializedName("flight")
-        val flight: Int
-    )
-}
+    val reuseCount: Int?,
+    @SerializedName("serial")
+    @ColumnInfo(name = "serial")
+    val serial: String?,
+    @SerializedName("status")
+    @ColumnInfo(name = "status")
+    val status: String?,
+    @SerializedName("type")
+    @ColumnInfo(name = "type")
+    val type: String?,
+    @SerializedName("water_landings")
+    @ColumnInfo(name = "water_landings")
+    val waterLandings: Int?
+)

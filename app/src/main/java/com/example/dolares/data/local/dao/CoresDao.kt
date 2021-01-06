@@ -11,10 +11,10 @@ interface CoresDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllCores(cores:List<Core>)
 
-    @Query("Select * From core_table")
+    @Query("Select * From cores_table")
     fun getAllCoresFlow(): Flow<List<Core>>
 
-    @Query("Delete From core_table")
+    @Query("Delete From cores_table")
     suspend fun deleteAllCore()
 
     @Transaction

@@ -1,7 +1,7 @@
 package com.example.dolares.data.local.converters
 
 import androidx.room.TypeConverter
-import com.example.dolares.data.local.model.launch.Rocket
+import com.example.dolares.data.local.model.Rocket
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

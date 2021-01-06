@@ -24,8 +24,10 @@ class CoresRepository(
         coresLoadingStatus.postValue(true)
         withContext(Dispatchers.IO) {
             val response = spacexApiService.getAllCores()
+            Log.d(TAG,"Response  -> ${response.isSuccessful}")
             if (response.isSuccessful) {
                 response.body()?.let {
+                    Log.d(TAG,"Fetched All Cores Successfully ${response.body()}")
                     coresDao.replaceAllCores(it)
                 }
             } else {

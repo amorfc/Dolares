@@ -5,14 +5,16 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.example.dolares.data.local.converters.MissionsConverter
+import com.example.dolares.data.local.converters.LaunchesListToStringConverter
+import com.example.dolares.data.local.converters.ListOfStringToJsonConverter
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "core_table")
+@Entity(tableName = "cores_table")
 data class Core(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
-    override val _id:Long?,
+    @PrimaryKey(autoGenerate = false)
+    @SerializedName("id")
+    @ColumnInfo(name = "id")
+    val id: String,
     @SerializedName("asds_attempts")
     @ColumnInfo(name = "asds_attempts")
     val asdsAttempts: Int?,
@@ -22,22 +24,13 @@ data class Core(
     @SerializedName("block")
     @ColumnInfo(name = "block")
     val block: Int?,
-    @SerializedName("core_serial")
-    @ColumnInfo(name = "core_serial")
-    val coreSerial: String?,
-    @SerializedName("details")
-    @ColumnInfo(name = "details")
-    val details: String?,
-    @SerializedName("missions")
-    @TypeConverters(MissionsConverter::class)
-    @ColumnInfo(name = "missions")
-    val missions: List<Capsule.Mission?>?,
-    @SerializedName("original_launch")
-    @ColumnInfo(name = "original_launch")
-    val originalLaunch: String?,
-    @SerializedName("original_launch_unix")
-    @ColumnInfo(name = "original_launch_unix")
-    val originalLaunchUnix: Int?,
+    @SerializedName("last_update")
+    @ColumnInfo(name = "last_update")
+    val lastUpdate: String?,
+    @TypeConverters(ListOfStringToJsonConverter::class)
+    @SerializedName("launches")
+    @ColumnInfo(name = "launches")
+    val launches: List<String?>?,
     @SerializedName("reuse_count")
     @ColumnInfo(name = "reuse_count")
     val reuseCount: Int?,
@@ -47,17 +40,10 @@ data class Core(
     @SerializedName("rtls_landings")
     @ColumnInfo(name = "rtls_landings")
     val rtlsLandings: Int?,
+    @SerializedName("serial")
+    @ColumnInfo(name = "serial")
+    val serial: String?,
     @SerializedName("status")
     @ColumnInfo(name = "status")
-    val status: String?,
-    @SerializedName("water_landing")
-    @ColumnInfo(name = "water_landing")
-    val waterLanding: Boolean?
-): BaseModel() {
-    data class Mission(
-        @SerializedName("flight")
-        val flight: Int?,
-        @SerializedName("name")
-        val name: String?
-    )
-}
+    val status: String?
+)

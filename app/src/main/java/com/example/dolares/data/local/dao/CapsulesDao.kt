@@ -19,7 +19,7 @@ interface CapsulesDao {
     @Query("Select * From capsules_table")
     fun getAllCapsulesFlow():Flow<List<Capsule>>
 
-    @Query("Select COUNT(_id) From capsules_table")
+    @Query("Select COUNT(id) From capsules_table")
     fun getNumberOfCapsulesFlow():Flow<Int>
 
     @Query("Delete From capsules_table" )

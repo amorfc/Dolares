@@ -32,8 +32,6 @@ class LaunchesViewModel(
         viewModelScope.launch(Dispatchers.IO){
             launchesRepository.getAllLaunchesFlowFromDb()
                 .collect { allLaunches.postValue(it)
-                Log.i("AllData",it.toString())
-                //TODO
                 }
         }
     }

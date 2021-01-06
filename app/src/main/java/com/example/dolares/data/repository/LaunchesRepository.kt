@@ -30,9 +30,11 @@ class LaunchesRepository(
     suspend fun fetchAllLaunchesSaveToDb(){
         launchesLoadingStatus.postValue(true)
         withContext(Dispatchers.IO){
-                val response = spacexApiService.getAllLaunches()
-                if(response.isSuccessful){
+            val response = spacexApiService.getAllLaunches()
+            Log.d(TAG,"Response  -> ${response.isSuccessful}")
+            if(response.isSuccessful){
                     response.body()?.let {
+                        Log.d(TAG,"Fetched All Launches Successfully ${response.body()}")
                         launchesDao.replaceAllLaunches(it)
                     }
                 }else {

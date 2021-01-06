@@ -27,8 +27,10 @@ class LaunchPadsRepository(
         launchPadsLoadingStatus.postValue(true)
         withContext(Dispatchers.IO){
             val response = spacexApiService.getAllLaunchPads()
+            Log.d(TAG,"Response  -> ${response.isSuccessful}")
             if(response.isSuccessful){
                 response.body()?.let {
+                    Log.d(TAG,"Fetched All Pads Successfully ${response.body()}")
                     launchPadsDao.replaceAllLaunchPads(it)
                 }
             }else{

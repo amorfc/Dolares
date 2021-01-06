@@ -30,6 +30,8 @@ class CapsulesRepository(
     fun getDataLoadingStatus(): LiveData<Boolean> = capsulesDataLoading
     fun getCapsulesSnackBarMessage(): LiveData<String> = capsulesSnackBar
 
+
+
     suspend fun executeRefreshData(){
         capsulesDataLoading.value = true
         withContext(Dispatchers.IO){

@@ -10,7 +10,6 @@ import com.example.dolares.data.repository.CapsulesRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 class CapsulesViewModel(
@@ -29,6 +28,7 @@ class CapsulesViewModel(
             capsulesRepository.getAllCapsulesFlow()
                 .collect{
                     allCapsules.postValue(it)
+                    Log.d("CapsulesViewModel","Fetched All Capsules Successfully ${it}")
                 }
         }
     }

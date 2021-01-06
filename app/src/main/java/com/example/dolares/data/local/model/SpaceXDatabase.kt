@@ -10,15 +10,13 @@ import com.example.dolares.data.local.dao.LaunchPadsDao
 import com.example.dolares.data.local.dao.LaunchesDao
 import com.example.dolares.data.local.model.launch.Launch
 
-@Database(entities = [Capsule::class,Core::class,Launch::class,LaunchPad::class],version = 3)
+@Database(entities = [Capsule::class,Core::class,Launch::class,LaunchPad::class],version = 4)
 
 @TypeConverters(value=[
-    MissionsConverter::class,
-    LinksConverter::class,
-    JsonArrayToStringConverter::class,
-    LaunchSiteConverter::class,
-    LocationConverter::class,
-    RocketConverter::class])
+    LaunchesListToStringConverter::class,
+    LinksToJsonConverter::class,
+    ListOfStringToJsonConverter::class
+])
 
 abstract class SpaceXDatabase: RoomDatabase() {
 

@@ -1,5 +1,6 @@
 package com.example.dolares.ui.launch_pads
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,7 +27,9 @@ class LaunchPadsViewModel(
         refreshData()
         viewModelScope.launch {
             launchPadsRepository.getAllLaunchPadsFlowFromDb()
-                .collect { allLaunchPads.postValue(it) }
+                .collect { allLaunchPads.postValue(it)
+                    Log.d("LaunchPadsViewModel","Fetched All Capsules Successfully ${it}")
+                }
         }
     }
 

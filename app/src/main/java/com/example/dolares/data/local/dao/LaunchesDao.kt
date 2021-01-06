@@ -10,7 +10,7 @@ interface LaunchesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllLaunches(launches:List<Launch>)
 
-    @Query("Select * From launch_table")
+    @Query("Select * From launches_table")
     fun getAllLaunchesFlow(): Flow<List<Launch>>
 
     @Transaction
@@ -19,7 +19,7 @@ interface LaunchesDao {
         insertAllLaunches(launches)
     }
 
-    @Query("Delete From launch_table")
+    @Query("Delete From launches_table")
     suspend fun deleteAllLaunches()
 
 }
