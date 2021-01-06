@@ -24,26 +24,27 @@ class CapsulesRepository(
     override val TAG = "CapsulesRepository"
     private val REFRESH_KEY = CAPSULE_DATA_REFRESH_KEY
 
-    private var capsulesDataStatus: MutableLiveData<Result<Any>> = MutableLiveData<Result<Any>>()
 
     fun getAllCapsulesFlow():Flow<List<Capsule>> = capsulesDao.getAllCapsulesFlow()
 
+    val loadingStatus: MutableLiveData<Boolean> = MutableLiveData(false)
+    val snackBarMessage: MutableLiveData<String> = MutableLiveData()
 
     suspend fun executeRefreshData(){
-        capsulesDataStatus.value = Result.Loading(true)
+        loadingStatus.value = true
         withContext(Dispatchers.IO){
             try {
                 fetchAllCapsulesAndSaveToDb()
             }catch (e:Exception){
                 when(e){
-                    is IOException -> capsulesDataStatus.postValue(Result.Error(exception = e))
+                    is IOException -> snackBarMessage.postValue(e.message)
                     else -> {
-                        capsulesDataStatus.postValue(Result.Error(message = "Unexpected Problem Occurred"))
+                        snackBarMessage.postValue( "Unexpected Problem Occurred")
                         Log.i(TAG,"Data couldn't refresh ${e.message}")
                     }
                 }
             }
-            capsulesDataStatus.value = Result.Loading(false)
+            loadingStatus.postValue(false)
         }
     }
 

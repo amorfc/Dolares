@@ -19,6 +19,10 @@ class CapsulesViewModel(
     private val TAG  = "CapsulesViewModel"
     val allCapsules  = MutableLiveData<List<Capsule>>()
 
+    val loadingStatus: MutableLiveData<Boolean> = capsulesRepository.loadingStatus
+    val snackBarMessage: MutableLiveData<String> = capsulesRepository.snackBarMessage
+
+
     init {
         viewModelScope.launch(Dispatchers.IO){
             capsulesRepository.getAllCapsulesFlow()
@@ -28,6 +32,6 @@ class CapsulesViewModel(
                 }
         }
     }
-    private fun refreshData() = viewModelScope.launch { capsulesRepository.executeRefreshData() }
+    fun refreshData() = viewModelScope.launch { capsulesRepository.refreshData(true) }
 
 }

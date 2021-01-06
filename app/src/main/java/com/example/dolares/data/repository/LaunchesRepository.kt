@@ -18,7 +18,10 @@ class LaunchesRepository(
     sharedPreferences: SharedPreferences
 ) : BaseRepository(sharedPreferences) {
 
-    private var capsulesDataStatus: MutableLiveData<Result<Any>> = MutableLiveData<Result<Any>>()
+
+    val loadingStatus: MutableLiveData<Boolean> = MutableLiveData(false)
+    val snackBarMessage: MutableLiveData<String> = MutableLiveData()
+
 
     override val TAG = "LaunchesRepository"
     private val REFRESH_KEY = LAUNCH_DATA_REFRESH_KEY
@@ -26,20 +29,20 @@ class LaunchesRepository(
     fun getAllLaunchesFlowFromDb(): Flow<List<Launch>> = launchesDao.getAllLaunchesFlow()
 
     suspend fun executeRefreshData() {
-        capsulesDataStatus.value = Result.Loading(true)
+        loadingStatus.value = true
         withContext(Dispatchers.IO) {
             try {
                 fetchAllLaunchesSaveToDb()
             } catch (e: Exception) {
                 when (e) {
-                    is IOException -> capsulesDataStatus.postValue(Result.Error(exception = e))
+                    is IOException -> snackBarMessage.postValue(e.message)
                     else -> {
-                        capsulesDataStatus.postValue(Result.Error(message = "Unexpected Problem Occurred"))
+                        snackBarMessage.postValue("Unexpected Problem Occurred")
                         Log.i(TAG, "Data couldn't refresh ${e.message}")
                     }
                 }
             }
-            capsulesDataStatus.value = Result.Loading(false)
+            loadingStatus.postValue(false)
         }
     }
 

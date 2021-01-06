@@ -19,6 +19,9 @@ class LaunchesViewModel(
 
     val allLaunches: MutableLiveData<List<Launch>> = MutableLiveData()
 
+    val loadingStatus: MutableLiveData<Boolean> = launchesRepository.loadingStatus
+    val snackBarMessage: MutableLiveData<String> = launchesRepository.snackBarMessage
+
 
     fun getAllLaunches():LiveData<List<Launch>> = allLaunches
 
@@ -30,6 +33,6 @@ class LaunchesViewModel(
         }
     }
 
-    private fun refreshData() = viewModelScope.launch { launchesRepository.fetchAllLaunchesSaveToDb() }
+    fun refreshData() = viewModelScope.launch { launchesRepository.refreshData(true) }
 
 }

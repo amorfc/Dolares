@@ -16,6 +16,10 @@ class CoresViewModel(
 
     val allCores:MutableLiveData<List<Core>> = MutableLiveData<List<Core>>()
 
+    val loadingStatus: MutableLiveData<Boolean> = coresRepository.loadingStatus
+    val snackBarMessage: MutableLiveData<String> = coresRepository.snackBarMessage
+
+
     init {
         viewModelScope.launch(Dispatchers.IO){
             coresRepository.getAllCoresFlowFromDb()
@@ -25,6 +29,6 @@ class CoresViewModel(
 
     fun getAllCores():LiveData<List<Core>> = allCores
 
-    fun refreshCoreData() = viewModelScope.launch { coresRepository.fetchAllDataSaveToDb() }
+    fun refreshCoreData() = viewModelScope.launch { coresRepository.refreshData(true) }
 
 }

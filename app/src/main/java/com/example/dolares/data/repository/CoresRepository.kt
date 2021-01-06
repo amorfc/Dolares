@@ -23,25 +23,26 @@ class CoresRepository(
     private val REFRESH_KEY = CORE_DATA_REFRESH_KEY
 
 
-    private var coresDataStatus: MutableLiveData<Result<Any>> = MutableLiveData<Result<Any>>()
+    val loadingStatus: MutableLiveData<Boolean> = MutableLiveData(false)
+    val snackBarMessage: MutableLiveData<String> = MutableLiveData()
 
     fun getAllCoresFlowFromDb(): Flow<List<Core>> = coresDao.getAllCoresFlow()
 
     suspend fun executeRefreshData(){
-        coresDataStatus.value = Result.Loading(true)
+        loadingStatus.value = true
         withContext(Dispatchers.IO){
             try {
                 fetchAllDataSaveToDb()
             }catch (e: Exception){
                 when(e){
-                    is IOException -> coresDataStatus.postValue(Result.Error(exception = e))
+                    is IOException -> snackBarMessage.postValue(e.message)
                     else -> {
-                        coresDataStatus.postValue(Result.Error(message = "Unexpected Problem Occurred"))
+                        snackBarMessage.postValue("Unexpected Problem Occurred")
                         Log.i(TAG,"Data couldn't refresh ${e.message}")
                     }
                 }
             }
-            coresDataStatus.value = Result.Loading(false)
+            loadingStatus.postValue(false)
         }
     }
 

@@ -7,14 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.dolares.R
 import com.example.dolares.databinding.LaunchesFragmentBinding
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LaunchesFragment : Fragment() {
 
     private val viewModel by viewModel<LaunchesViewModel>()
     private lateinit var binding: LaunchesFragmentBinding
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
     companion object {
         fun newInstance() = LaunchesFragment()
@@ -32,17 +35,36 @@ class LaunchesFragment : Fragment() {
             container,
             false)
 
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+        init()
         return binding.root
     }
 
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        // TODO: Use the ViewModel
-//        viewModel.getAllLaunches().observe(viewLifecycleOwner,{
-//            binding.launches.text = it.toString()
-//        })
+
+        viewModel.loadingStatus.observe(viewLifecycleOwner,{
+            swipeRefreshLayout.isRefreshing = it
+            if(it){
+                binding.progressBar4.visibility = View.VISIBLE
+            }else{
+                binding.progressBar4.visibility = View.GONE
+            }
+        })
+
+        viewModel.snackBarMessage.observe(viewLifecycleOwner,{
+            Snackbar.make(swipeRefreshLayout,it,Snackbar.LENGTH_SHORT).show()
+        })
+
+        swipeRefreshLayout.setOnRefreshListener {
+            viewModel.refreshData()
+        }
+
     }
 
+    private fun init() {
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+        swipeRefreshLayout = binding.swipeRefreshLayoutLaunches
+    }
 }
