@@ -39,7 +39,5 @@ class LaunchDetailsFragment : Fragment() {
         binding.viewModel = viewModel
         viewModel.fetchSelectedLaunch(launchId)
 
-
     }
-
 }

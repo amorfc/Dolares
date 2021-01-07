@@ -26,8 +26,7 @@
             android:id="@+id/Linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:onClick="@{()->clickListener.onClick(core)}">
+            android:orientation="horizontal">
 
 
             <TextView
@@ -36,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:text="@{core.reuseCount.toString()}"
                 app:layout_constraintBottom_toBottomOf="parent"
+                android:onClick="@{()->clickListener.onClick(core)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

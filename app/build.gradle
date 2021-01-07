@@ -4,7 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id "androidx.navigation.safeargs.kotlin"
     id "org.jlleitschuh.gradle.ktlint"
-    id "kotlin-android-extensions"
+    id "kotlin-parcelize"
 }
 
 android {
@@ -35,6 +35,7 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
+
         dataBinding true
     }
 }
@@ -50,7 +51,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
+    //Room
     implementation "androidx.room:room-runtime:$rootProject.room_version"
     kapt "androidx.room:room-compiler:$rootProject.room_version"
     implementation "androidx.room:room-ktx:$rootProject.room_version"
