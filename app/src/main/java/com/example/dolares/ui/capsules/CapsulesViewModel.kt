@@ -21,7 +21,7 @@ class CapsulesViewModel(
 
     val loadingStatus: MutableLiveData<Boolean> = capsulesRepository.loadingStatus
     val snackBarMessage: MutableLiveData<String> = capsulesRepository.snackBarMessage
-
+    val selectedItem: MutableLiveData<Capsule?> = MutableLiveData()
 
     init {
         viewModelScope.launch(Dispatchers.IO){
@@ -33,5 +33,12 @@ class CapsulesViewModel(
         }
     }
     fun refreshData() = viewModelScope.launch { capsulesRepository.refreshData(true) }
+
+    fun navigateSelectedItemDetailsScreen(capsule: Capsule){
+        selectedItem.value = capsule
+    }
+    fun doneNavigateDetailsScreen(){
+        selectedItem.value = null
+    }
 
 }

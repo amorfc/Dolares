@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.dolares.R
+import com.example.dolares.data.local.model.Capsule
 import com.example.dolares.databinding.CapsulesFragmentBinding
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -46,7 +48,6 @@ class CapsulesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
         viewModel.loadingStatus.observe(viewLifecycleOwner, {
 
             swipeRefreshLayout.isRefreshing = it
@@ -58,9 +59,17 @@ class CapsulesFragment : Fragment() {
             }
         })
 
-        viewModel.snackBarMessage.observe(viewLifecycleOwner,{
+        viewModel.selectedItem.observe(viewLifecycleOwner, {
             it?.let {
-                Snackbar.make(swipeRefreshLayout,it,Snackbar.LENGTH_SHORT).show()
+                navigateCapsuleDetails(it)
+                viewModel.doneNavigateDetailsScreen()
+            }
+
+        })
+
+        viewModel.snackBarMessage.observe(viewLifecycleOwner, {
+            it?.let {
+                Snackbar.make(swipeRefreshLayout, it, Snackbar.LENGTH_SHORT).show()
             }
         })
 
@@ -70,10 +79,31 @@ class CapsulesFragment : Fragment() {
         }
     }
 
-    private fun init(){
+    private fun init() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         swipeRefreshLayout = binding.swipeRefreshLayout
+        adapterInit()
+    }
+
+    private fun adapterInit() {
+        val clickListener = CapsulesAdapter.CapsulesClickListener { capsule ->
+            viewModel.navigateSelectedItemDetailsScreen(capsule)
+        }
+        val adapter = CapsulesAdapter(clickListener)
+        binding.capsulesRV.adapter = adapter
+    }
+
+    private fun navigateCapsuleDetails(capsule: Capsule?) {
+        capsule?.let {
+            findNavController().navigate(
+                CapsulesFragmentDirections.actionCapsulesFragmentToCapsuleDetailsFragment(
+                    parcelableCapsule = it
+                )
+            )
+            return
+        }
+        Snackbar.make(swipeRefreshLayout, "Something Went Wrong", Snackbar.LENGTH_SHORT).show()
     }
 
 }

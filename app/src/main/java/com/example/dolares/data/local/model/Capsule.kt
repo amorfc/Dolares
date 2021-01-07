@@ -1,20 +1,23 @@
 package com.example.dolares.data.local.model
 
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.example.dolares.data.local.converters.LaunchesListToStringConverter
 import com.example.dolares.data.local.converters.ListOfStringToJsonConverter
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+
+@Parcelize
 @Entity(tableName = "capsules_table")
 data class Capsule(
     @PrimaryKey(autoGenerate = false)
     @SerializedName("id")
     @ColumnInfo(name = "id")
-    override val id: String,
+    val id: String,
     @SerializedName("land_landings")
     @ColumnInfo(name = "land_landings")
     val landLandings: Int?,
@@ -40,4 +43,4 @@ data class Capsule(
     @SerializedName("water_landings")
     @ColumnInfo(name = "water_landings")
     val waterLandings: Int?
-):BaseModel()
+):Parcelable

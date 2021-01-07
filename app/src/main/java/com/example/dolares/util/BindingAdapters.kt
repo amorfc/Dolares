@@ -10,37 +10,19 @@ import com.example.dolares.data.local.model.LaunchPad
 import com.example.dolares.data.local.model.launch.Launch
 import com.example.dolares.ui.GenericAdapter
 import com.example.dolares.ui.MODEL_TYPE
+import com.example.dolares.ui.capsules.CapsulesAdapter
 
 
 @BindingAdapter("submitNewList")
-fun setRecyclerViewItem(recyclerView: RecyclerView,items: List<BaseModel>?){
+fun setRecyclerViewItem(recyclerView: RecyclerView,items: List<Any>?){
 
-    Log.i("BindingAdapters",items.toString())
-
-        items?.let{
-            var item:BaseModel? = null
-            if(items.size > 0) item = items[0]
-            when (item) {
-                is Capsule -> {
-                    recyclerView.adapter = GenericAdapter(MODEL_TYPE.Capsule)
-                    val adapter = recyclerView.adapter as GenericAdapter
-                    adapter.submitListItems(it)
-                }
-                is LaunchPad -> {
-                    recyclerView.adapter = GenericAdapter(MODEL_TYPE.LaunchPad)
-                    val adapter = recyclerView.adapter as GenericAdapter
-                    adapter.submitListItems(it)
-                }
-                is Launch -> {
-                    recyclerView.adapter = GenericAdapter(MODEL_TYPE.Launch)
-                    val adapter = recyclerView.adapter as GenericAdapter
-                    adapter.submitListItems(it)
-                }
-                is Core -> {
-                    recyclerView.adapter = GenericAdapter(MODEL_TYPE.Core)
-                    val adapter = recyclerView.adapter as GenericAdapter
-                    adapter.submitListItems(it)
+    items?.let {
+        when(it[0]){
+            is Capsule->{
+                val adapter:CapsulesAdapter = recyclerView.adapter as CapsulesAdapter
+                adapter.submitListItems(items as List<Capsule>)
             }
         }
     }
+
 }

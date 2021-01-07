@@ -1,6 +1,7 @@
 package com.example.dolares.ui
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -21,7 +22,7 @@ import kotlinx.coroutines.withContext
 
 enum class MODEL_TYPE { Capsule, Launch, Core, LaunchPad }
 
-class GenericAdapter(val modelType: MODEL_TYPE) :
+class GenericAdapter(val modelType: MODEL_TYPE,val clickListener:View.OnClickListener) :
     ListAdapter<GenericAdapter.DataItem, RecyclerView.ViewHolder>(ItemDiffCallback()) {
     private val adapterScope = CoroutineScope(Dispatchers.Default)
 
@@ -36,10 +37,10 @@ class GenericAdapter(val modelType: MODEL_TYPE) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is CapsuleViewHolder -> {
-                val item = getItem(position) as DataItem.ModelItem<*>
-                if (item.model is Capsule) holder.bind(capsule = item.model)
-            }
+//            is CapsuleViewHolder -> {
+//                val item = getItem(position) as DataItem.ModelItem<*>
+//                if (item.model is Capsule) holder.bind(capsule = item.model)
+//            }
             is LaunchPadsViewHolder -> {
                 val item = getItem(position) as DataItem.ModelItem<*>
                 if (item.model is LaunchPad) holder.bind(launchPad = item.model)
@@ -167,6 +168,8 @@ class GenericAdapter(val modelType: MODEL_TYPE) :
 
     }
 }
+
+
 
 
 

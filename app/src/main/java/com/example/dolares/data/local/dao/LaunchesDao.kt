@@ -19,6 +19,7 @@ interface LaunchesDao {
         insertAllLaunches(launches)
     }
 
+
     @Query("Delete From launches_table")
     suspend fun deleteAllLaunches()
 

@@ -12,7 +12,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CapsulesAdapter : ListAdapter<DataItem, RecyclerView.ViewHolder>(CapsulesDiffCallback()) {
+class CapsulesAdapter(val clickListener: CapsulesClickListener) :
+    ListAdapter<DataItem, RecyclerView.ViewHolder>(CapsulesDiffCallback()) {
 
     private val adapterScope = CoroutineScope(Dispatchers.Default)
 
@@ -23,7 +24,7 @@ class CapsulesAdapter : ListAdapter<DataItem, RecyclerView.ViewHolder>(CapsulesD
         when (holder) {
             is ViewHolder -> {
                 val item = getItem(position) as DataItem.CapsuleItem
-                holder.bind(capsule = item.capsule)
+                holder.bind(capsule = item.capsule,clickListener)
             }
         }
     }
@@ -42,8 +43,9 @@ class CapsulesAdapter : ListAdapter<DataItem, RecyclerView.ViewHolder>(CapsulesD
     class ViewHolder private constructor(private val capsulesListItemBinding: CapsulesListItemBinding) :
         RecyclerView.ViewHolder(capsulesListItemBinding.root) {
 
-        fun bind(capsule: Capsule) {
+        fun bind(capsule: Capsule,clickListener: CapsulesClickListener) {
             capsulesListItemBinding.capsule = capsule
+            capsulesListItemBinding.clickListener = clickListener
             capsulesListItemBinding.executePendingBindings()
 
         }
@@ -63,6 +65,9 @@ class CapsulesAdapter : ListAdapter<DataItem, RecyclerView.ViewHolder>(CapsulesD
 
     }
 
+    class CapsulesClickListener(val clickListener: (capsuleData: Capsule) -> Unit) {
+        fun onClick(capsule: Capsule) = clickListener(capsule)
+    }
 }
 
 
@@ -85,3 +90,4 @@ sealed class DataItem {
 
     abstract val id: String
 }
+

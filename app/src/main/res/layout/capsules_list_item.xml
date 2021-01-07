@@ -4,7 +4,9 @@
 
 
     <data>
-
+            <variable
+                name="clickListener"
+                type="com.example.dolares.ui.capsules.CapsulesAdapter.CapsulesClickListener" />
         <variable
             name="capsule"
             type="com.example.dolares.data.local.model.Capsule" />
@@ -17,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:clickable="true"
+        android:onClick="@{()->clickListener.onClick(capsule)}"
         android:foreground="@color/grey"
         app:cardCornerRadius="10dp"
         app:cardElevation="3dp">

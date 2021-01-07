@@ -54,7 +54,7 @@ class CapsulesRepository(
                 checkIfDataRefreshNeeded(REFRESH_KEY)
             }
             if(!isNeeded){
-                Log.i(TAG,"Dont needed refresh")
+                Log.i(TAG,"Don't needed refresh")
                 return
             }
         }
