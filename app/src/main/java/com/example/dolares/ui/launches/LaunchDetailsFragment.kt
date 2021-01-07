@@ -6,7 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.example.dolares.R
+import com.example.dolares.data.repository.LaunchDetailsRepository
+import com.example.dolares.databinding.LaunchDetailsFragmentBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LaunchDetailsFragment : Fragment() {
 
@@ -14,19 +18,28 @@ class LaunchDetailsFragment : Fragment() {
         fun newInstance() = LaunchDetailsFragment()
     }
 
-    private lateinit var viewModel: LaunchDetailsViewModel
-
+    private val viewModel by viewModel<LaunchDetailsViewModel>()
+    private lateinit var binding: LaunchDetailsFragmentBinding
+    private lateinit var launchId:String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.launch_details_fragment, container, false)
+    ): View {
+        binding = DataBindingUtil.inflate(inflater,R.layout.launch_details_fragment, container, false)
+
+        launchId = LaunchDetailsFragmentArgs.fromBundle(arguments!!).launchId
+        binding.lifecycleOwner = this
+
+        return  binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LaunchDetailsViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        binding.viewModel = viewModel
+        viewModel.fetchSelectedLaunch(launchId)
+
+
     }
 
 }

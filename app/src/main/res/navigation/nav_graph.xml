@@ -29,7 +29,11 @@
     <fragment
         android:id="@+id/launchesFragment"
         android:name="com.example.dolares.ui.launches.LaunchesFragment"
-        android:label="LaunchesFragment" />
+        android:label="LaunchesFragment" >
+        <action
+            android:id="@+id/action_launchesFragment_to_launchDetailsFragment"
+            app:destination="@id/launchDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/capsuleDetailsFragment"
         android:name="com.example.dolares.ui.capsules.CapsuleDetailsFragment"
@@ -46,5 +50,13 @@
         <argument
             android:name="parcelableCore"
             app:argType="com.example.dolares.data.local.model.Core" />
+    </fragment>
+    <fragment
+        android:id="@+id/launchDetailsFragment"
+        android:name="com.example.dolares.ui.launches.LaunchDetailsFragment"
+        android:label="LaunchDetailsFragment" >
+        <argument
+            android:name="launchId"
+            app:argType="string" />
     </fragment>
 </navigation>

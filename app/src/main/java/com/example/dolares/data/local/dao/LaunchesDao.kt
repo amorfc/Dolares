@@ -19,8 +19,10 @@ interface LaunchesDao {
         insertAllLaunches(launches)
     }
 
-
     @Query("Delete From launches_table")
     suspend fun deleteAllLaunches()
+
+    @Query("Select * From launches_table Where id = :launchId")
+    fun getSpecificLaunch(launchId:String):Flow<Launch>
 
 }

@@ -21,7 +21,7 @@ class LaunchesViewModel(
 
     val loadingStatus: MutableLiveData<Boolean> = launchesRepository.loadingStatus
     val snackBarMessage: MutableLiveData<String> = launchesRepository.snackBarMessage
-
+    val selectedLaunchId: MutableLiveData<String?> = MutableLiveData()
 
     fun getAllLaunches():LiveData<List<Launch>> = allLaunches
 
@@ -34,5 +34,13 @@ class LaunchesViewModel(
     }
 
     fun refreshData() = viewModelScope.launch { launchesRepository.refreshData(true) }
+
+    fun navigateSelectedLaunchDetailsScreen(launchId: String){
+        selectedLaunchId.value = launchId
+    }
+
+    fun doneNavigateSelectedDetailsScreen(){
+        selectedLaunchId.value = null
+    }
 
 }

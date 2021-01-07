@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
-            name="selectedLaunch"
-            type="com.example.dolares.data.local.model.launch.Launch" />
+            name="viewModel"
+            type="com.example.dolares.ui.launches.LaunchDetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +17,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@{selectedLaunch.component8()}" />
+            android:text="@{viewModel.selectedLaunch.dateUtc}" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

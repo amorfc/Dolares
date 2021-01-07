@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.dolares.R
 import com.example.dolares.databinding.LaunchesFragmentBinding
@@ -61,6 +62,13 @@ class LaunchesFragment : Fragment() {
             viewModel.refreshData()
         }
 
+        viewModel.selectedLaunchId.observe(viewLifecycleOwner,{
+            it?.let{
+                navigateDetailsScreen(it)
+                viewModel.doneNavigateSelectedDetailsScreen()
+            }
+        })
+
     }
 
     private fun init() {
@@ -71,10 +79,18 @@ class LaunchesFragment : Fragment() {
 
     private fun adapterInit(){
         val launchItemClickListener = LaunchAdapter.LaunchItemClickListener{
-            Snackbar.make(swipeRefreshLayout,"item Clicked",Snackbar.LENGTH_SHORT).show()
-
+            viewModel.navigateSelectedLaunchDetailsScreen(launchId = it.id)
         }
         val adapter = LaunchAdapter(launchItemClickListener)
         binding.launchesRV.adapter = adapter
+    }
+
+    private fun navigateDetailsScreen(launchId:String?){
+        launchId?.let {
+            findNavController().navigate(LaunchesFragmentDirections.actionLaunchesFragmentToLaunchDetailsFragment(launchId = launchId))
+            return
+        }
+        Snackbar.make(swipeRefreshLayout,"Something Went Wrong",Snackbar.LENGTH_SHORT).show()
+
     }
 }

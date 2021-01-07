@@ -19,7 +19,8 @@ class DolaresApplication : Application() {
                 capsulesModule,
                 coresModule,
                 launchesModule,
-                launchPadsModule))
+                launchPadsModule,
+                launchDetailsModule))
         }
     }
 }
