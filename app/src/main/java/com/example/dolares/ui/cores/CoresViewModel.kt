@@ -16,6 +16,8 @@ class CoresViewModel(
 
     val allCores:MutableLiveData<List<Core>> = MutableLiveData<List<Core>>()
 
+    val selectedCoreItem: MutableLiveData<Core> = MutableLiveData()
+
     val loadingStatus: MutableLiveData<Boolean> = coresRepository.loadingStatus
     val snackBarMessage: MutableLiveData<String> = coresRepository.snackBarMessage
 
@@ -30,5 +32,12 @@ class CoresViewModel(
     fun getAllCores():LiveData<List<Core>> = allCores
 
     fun refreshCoreData() = viewModelScope.launch { coresRepository.refreshData(true) }
+    fun navigateSelectedCoreDetails(core: Core) {
+        selectedCoreItem.value = core
+    }
+
+    fun doneNavigateDetailsScreen(){
+        selectedCoreItem.value = null
+    }
 
 }

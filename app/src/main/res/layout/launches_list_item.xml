@@ -4,6 +4,9 @@
 
     <data>
         <variable
+            name="clickListener"
+            type="com.example.dolares.ui.launches.LaunchAdapter.LaunchItemClickListener" />
+        <variable
             name="launch"
             type="com.example.dolares.data.local.model.launch.Launch" />
     </data>
@@ -13,6 +16,7 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{()->clickListener.onClick(launch)}"
         android:layout_margin="5dp"
         android:clickable="true"
         app:cardCornerRadius="10dp"

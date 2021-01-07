@@ -1,6 +1,7 @@
 package com.example.dolares.data.local.model
 
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,13 +9,15 @@ import androidx.room.TypeConverters
 import com.example.dolares.data.local.converters.LaunchesListToStringConverter
 import com.example.dolares.data.local.converters.ListOfStringToJsonConverter
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(tableName = "cores_table")
 data class Core(
     @PrimaryKey(autoGenerate = false)
     @SerializedName("id")
     @ColumnInfo(name = "id")
-    override val id: String,
+    val id: String,
     @SerializedName("asds_attempts")
     @ColumnInfo(name = "asds_attempts")
     val asdsAttempts: Int?,
@@ -46,4 +49,4 @@ data class Core(
     @SerializedName("status")
     @ColumnInfo(name = "status")
     val status: String?
-):BaseModel()
+):Parcelable

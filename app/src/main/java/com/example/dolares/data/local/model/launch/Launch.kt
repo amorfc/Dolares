@@ -10,12 +10,13 @@ import com.example.dolares.data.local.converters.ListOfStringToJsonConverter
 import com.example.dolares.data.local.model.BaseModel
 import com.google.gson.annotations.SerializedName
 
+
 @Entity(tableName = "launches_table")
 data class Launch(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
     @SerializedName("id")
-    override val id: String,
+    val id: String,
     @ColumnInfo(name = "auto_update")
     @SerializedName("auto_update")
     val autoUpdate: Boolean?,
@@ -94,7 +95,7 @@ data class Launch(
     @ColumnInfo(name = "window")
     @SerializedName("window")
     val window: Int?
-): BaseModel() {
+) {
     data class Core(
         @SerializedName("core")
         val core: String?,

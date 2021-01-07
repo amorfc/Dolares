@@ -5,6 +5,9 @@
 
     <data>
         <variable
+            name="clickListener"
+            type="com.example.dolares.ui.cores.CoresAdapter.CoreItemClickListener" />
+        <variable
             name="core"
             type="com.example.dolares.data.local.model.Core" />
     </data>
@@ -23,7 +26,8 @@
             android:id="@+id/Linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:onClick="@{()->clickListener.onClick(core)}">
 
 
             <TextView

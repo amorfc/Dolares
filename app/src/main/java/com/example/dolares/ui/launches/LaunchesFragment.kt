@@ -36,6 +36,7 @@ class LaunchesFragment : Fragment() {
             false)
 
         init()
+        adapterInit()
         return binding.root
     }
 
@@ -66,5 +67,14 @@ class LaunchesFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         swipeRefreshLayout = binding.swipeRefreshLayoutLaunches
+    }
+
+    private fun adapterInit(){
+        val launchItemClickListener = LaunchAdapter.LaunchItemClickListener{
+            Snackbar.make(swipeRefreshLayout,"item Clicked",Snackbar.LENGTH_SHORT).show()
+
+        }
+        val adapter = LaunchAdapter(launchItemClickListener)
+        binding.launchesRV.adapter = adapter
     }
 }
