@@ -2,6 +2,7 @@ package com.example.dolares.util
 
 const val SPACEX_API_URL = "https://api.spacexdata.com/v4/"
 
+const val COUNT_DOWN_INTERVAL = 1000L
 
 const val CAPSULE_DATA_REFRESH_KEY =  "capsule_data_refresh_key"
 const val CORE_DATA_REFRESH_KEY =  "core_data_refresh_key"
