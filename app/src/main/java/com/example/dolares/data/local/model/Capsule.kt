@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.example.dolares.data.local.converters.ListOfStringToJsonConverter
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 
 @Parcelize

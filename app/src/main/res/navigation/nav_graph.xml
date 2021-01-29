@@ -37,8 +37,7 @@
     <fragment
         android:id="@+id/capsuleDetailsFragment"
         android:name="com.example.dolares.ui.capsules.CapsuleDetailsFragment"
-        android:label="fragment_capsule_details"
-        tools:layout="@layout/fragment_capsule_details" >
+        android:label="fragment_capsule_details">
         <argument
             android:name="parcelableCapsule"
             app:argType="com.example.dolares.data.local.model.Capsule" />
