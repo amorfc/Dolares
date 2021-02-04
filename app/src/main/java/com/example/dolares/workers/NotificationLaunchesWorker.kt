@@ -8,6 +8,7 @@ import androidx.work.WorkerParameters
 import com.example.dolares.data.local.dao.LaunchesDao
 import com.example.dolares.data.local.model.launch.Launch
 import com.example.dolares.util.NOTIFICATION_WORKING_TAG
+import com.example.dolares.util.SECONDS_IN24_HOUR
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.koin.core.KoinComponent
@@ -28,7 +29,7 @@ class NotificationLaunchesWorker(ctx:Context,params: WorkerParameters) :Coroutin
             if (nextLaunchTime == 0L || firstUpcomingLaunch.name == null || firstUpcomingLaunch.name.isBlank()) Result.retry()
 
             val currentTime = System.currentTimeMillis() / 1000
-            if (nextLaunchTime - currentTime < 86400) {
+            if (nextLaunchTime - currentTime < SECONDS_IN24_HOUR) {
                 fireNotification(firstUpcomingLaunch.flightNumber, nextLaunchTime, firstUpcomingLaunch.name)
             }
                 Result.success()
