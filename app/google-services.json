@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "576411341310",
+    "project_id": "dolares-e0d49",
+    "storage_bucket": "dolares-e0d49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576411341310:android:d8374fa1b9a02e0d92f0af",
+        "android_client_info": {
+          "package_name": "com.example.dolares"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "576411341310-dhlsk0e38jsju52crlvhussdem7dgn7e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNswtfdLTmtZ7G8gsTBHrMh0ibDH6hUzE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "576411341310-dhlsk0e38jsju52crlvhussdem7dgn7e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
