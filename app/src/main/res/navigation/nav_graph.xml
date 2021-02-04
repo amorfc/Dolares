@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/capsulesFragment">
 
     <fragment
         android:id="@+id/capsulesFragment"
@@ -22,10 +22,6 @@
             android:id="@+id/action_coresFragment_to_coreDetailsFragment"
             app:destination="@id/coreDetailsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/launchPadsFragment"
-        android:name="com.example.dolares.ui.launch_pads.LaunchPadsFragment"
-        android:label="LaunchPadsFragment" />
     <fragment
         android:id="@+id/launchesFragment"
         android:name="com.example.dolares.ui.launches.LaunchesFragment"
@@ -79,4 +75,8 @@
             app:destination="@id/capsulesFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.dolares.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

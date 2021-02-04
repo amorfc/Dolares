@@ -25,4 +25,7 @@ interface LaunchesDao {
     @Query("Select * From launches_table Where id = :launchId")
     fun getSpecificLaunch(launchId:String):Flow<Launch>
 
+    @Query("SELECT * FROM launches_table WHERE date_unix > :startDateUnix")
+    suspend fun getLaunchesAfterNow(startDateUnix: Long): List<Launch>
+
 }

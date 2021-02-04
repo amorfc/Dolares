@@ -28,7 +28,7 @@
         android:icon="@drawable/ic_baseline_account_balance_24"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/Settings"
+        android:id="@+id/settingsFragment"
         android:title="@string/Settings"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_settings_24"

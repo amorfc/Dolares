@@ -1,5 +1,8 @@
 package com.example.dolares.di
 
+import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import androidx.room.Room
 import com.example.dolares.data.local.model.SpaceXDatabase
@@ -12,12 +15,14 @@ import com.example.dolares.ui.launches.LaunchDetailsViewModel
 import com.example.dolares.ui.launches.LaunchesViewModel
 import com.example.dolares.ui.login.LoginViewModel
 import com.example.dolares.ui.register.RegisterViewModel
+import com.example.dolares.util.PREFERENCES_FILE_KEY
 import com.example.dolares.util.SPACEX_API_URL
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
 
 val appModule = module {
     single {
@@ -30,7 +35,8 @@ val appModule = module {
             .build()
     }
 
-    single { PreferenceManager.getDefaultSharedPreferences(get()) }
+    single { androidx.preference.PreferenceManager.getDefaultSharedPreferences(get()) }
+
 
 }
 

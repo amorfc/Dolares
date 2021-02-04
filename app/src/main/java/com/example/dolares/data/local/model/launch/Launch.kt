@@ -38,7 +38,7 @@ data class Launch(
     val datePrecision: String?,
     @ColumnInfo(name = "date_unix")
     @SerializedName("date_unix")
-    val dateUnix: Int?,
+    val dateUnix: Long?,
     @ColumnInfo(name = "date_utc")
     @SerializedName("date_utc")
     val dateUtc: String?,

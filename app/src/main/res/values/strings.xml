@@ -36,4 +36,5 @@
     <string name="HELLO">Hello!!!</string>
     <string name="UserName" />
     <string name="image">Image</string>
+    <string name="upcoming_notifications">If you wanna notification about the all upcoming launches</string>
 </resources>

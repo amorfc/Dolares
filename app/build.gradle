@@ -53,6 +53,10 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    //Preferences
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+    //Work Manager
+    implementation "androidx.work:work-runtime-ktx:$rootProject.work_version"
     //Firebase
     implementation platform('com.google.firebase:firebase-bom:26.4.0')
     implementation 'com.google.firebase:firebase-auth-ktx'
