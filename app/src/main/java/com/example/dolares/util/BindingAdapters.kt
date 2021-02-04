@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dolares.data.local.model.Capsule
 import com.example.dolares.data.local.model.Core
 import com.example.dolares.data.local.model.launch.Launch
+import com.example.dolares.data.repository.AuthStatus
 import com.example.dolares.ui.capsules.CapsulesAdapter
 import com.example.dolares.ui.cores.CoresAdapter
 import com.example.dolares.ui.launches.LaunchAdapter
@@ -39,6 +40,14 @@ fun setRecyclerViewItem(recyclerView: RecyclerView, items: List<Any>?) {
 
 }
 
+@BindingAdapter("registerStatus")
+fun setProgressBarStatus(view: View, status: AuthStatus?) {
+    when (status) {
+        AuthStatus.LOADING -> view.visibility = View.VISIBLE
+        AuthStatus.ERROR-> view.visibility = View.GONE
+        else -> view.visibility = View.GONE
+    }
+}
 
 @BindingAdapter("setTimer")
 fun setTimerText(tw:TextView,time:Long){

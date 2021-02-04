@@ -10,6 +10,8 @@ import com.example.dolares.ui.cores.CoresViewModel
 import com.example.dolares.ui.launch_pads.LaunchPadsViewModel
 import com.example.dolares.ui.launches.LaunchDetailsViewModel
 import com.example.dolares.ui.launches.LaunchesViewModel
+import com.example.dolares.ui.login.LoginViewModel
+import com.example.dolares.ui.register.RegisterViewModel
 import com.example.dolares.util.SPACEX_API_URL
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -118,6 +120,18 @@ val launchPadsModule = module {
     }
 
     viewModel { LaunchPadsViewModel(get()) }
+
+}
+
+val userModule = module {
+
+    single {
+        AuthRepository()
+    }
+
+
+    viewModel { LoginViewModel(get(),get()) }
+    viewModel { RegisterViewModel(get(),get()) }
 
 }
 
