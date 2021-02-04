@@ -11,7 +11,10 @@ const val CORE_DATA_REFRESH_KEY =  "core_data_refresh_key"
 const val LAUNCH_DATA_REFRESH_KEY =  "launch_data_refresh_key"
 const val LAUNCHES_NOTIFICATIONS_KEY =  "upcoming_notification_prefs"
 
+const val CHANNEL_ID = "38"
+const val NOTIFY_ID = 383838
 
 const val SECONDS_IN24_HOUR = 86400L
 const val PREFS_KEY_REFRESH_INTERVAL = "prefs_refresh_interval"
 const val NOTIFICATION_WORKING_TAG = "Notifications Working"
+
