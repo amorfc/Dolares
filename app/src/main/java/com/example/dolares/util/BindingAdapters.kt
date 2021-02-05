@@ -1,5 +1,7 @@
 package com.example.dolares.util
 
+import android.content.res.Resources
+import android.provider.Settings.Global.getString
 import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -11,6 +13,8 @@ import com.example.dolares.data.repository.AuthStatus
 import com.example.dolares.ui.capsules.CapsulesAdapter
 import com.example.dolares.ui.cores.CoresAdapter
 import com.example.dolares.ui.launches.LaunchAdapter
+import com.example.dolares.R
+
 
 
 @BindingAdapter("submitNewList")
@@ -37,6 +41,28 @@ fun setRecyclerViewItem(recyclerView: RecyclerView, items: List<Any>?) {
             }
         }
     }
+
+}
+
+@BindingAdapter("setTimerDateFormat")
+fun TextView.setTimerDateFormat(timer:Long){
+
+    var inSeconds = 0L
+    val day = inSeconds/86400
+    inSeconds %= 86400
+
+    val hour = inSeconds/3600
+    inSeconds %= 3600
+
+    val minutes = inSeconds/60
+    inSeconds %= 60
+
+    if(inSeconds == 0L ){
+        this.text = this.context.getString(R.string.launched_launch_timer_text)
+        return
+    }
+
+    this.text = this.context.getString(R.string.upcoming_launch_date_format,day,hour,minutes,inSeconds)
 
 }
 

@@ -60,7 +60,12 @@ class LaunchDetailsViewModel(
 
     private fun setTimer(launch: Launch) {
 
-        val launchTimeMillis = launch.dateUnix!!.toLong() * 1000
+        var launchTimeMillis:Long = 0L
+
+        launch.dateUnix?.let {
+            launchTimeMillis = it * 1000
+        }
+
         val currentTimeMillis = System.currentTimeMillis()
 
         val launchCountDownMillis = launchTimeMillis - currentTimeMillis

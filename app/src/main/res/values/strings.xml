@@ -64,4 +64,6 @@
     <string name="Reused">Reused</string>
     <string name="water_landings">Water Landings</string>
     <string name="_2032021">2032021</string>
+    <string name="upcoming_launch_date_format">Day <b>%1$d</b>Hours %2$d Minutes %3$d Seconds %4$d</string>
+    <string name="launched_launch_timer_text">Already Launched</string>
 </resources>
