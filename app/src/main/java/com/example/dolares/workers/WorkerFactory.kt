@@ -14,7 +14,8 @@ class MyWorkerFactory : WorkerFactory() {
     ): ListenableWorker? {
 
         return when(workerClassName){
-            NotificationLaunchesWorker::class.java.name -> NotificationLaunchesWorker(appContext, workerParameters)
+            NotificationUsersSelectedLaunchesWorker::class.java.name -> NotificationUsersSelectedLaunchesWorker(appContext, workerParameters)
+            NotificationDailyLaunchesWorker::class.java.name -> NotificationDailyLaunchesWorker(appContext, workerParameters)
             else -> null
         }
 

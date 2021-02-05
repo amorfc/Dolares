@@ -170,6 +170,7 @@ class LaunchesRepository(
         testLaunch.id = "asdfasdfasdfasdf"
         testLaunch.name = "Dogus University Test Launch"
         testLaunch.dateUnix = System.currentTimeMillis()/1000L + 840L
+        testLaunch.upcoming = true
 
         return testLaunch
     }

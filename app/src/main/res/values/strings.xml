@@ -36,6 +36,8 @@
     <string name="HELLO">Hello!!!</string>
     <string name="UserName" />
     <string name="image">Image</string>
+    <string name="flight_number_template_in_less_than_24h">Flight %d in less than 24h</string>
+    <string name="launch_notification_desc_template">"Mission %1$s will launch at %2$s"</string>
     <string name="upcoming_notifications">If you wanna notification about the all upcoming launches</string>
     <string name="user_launch_notification_title">New Rocket Launch -> </string>
     <string name="user_launch_notification_content">In 15 minutes there is a new Launch.Flight number is </string>

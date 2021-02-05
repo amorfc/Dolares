@@ -32,7 +32,7 @@ interface LaunchesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNotifyLaunch(launchToNotify: LaunchToNotify)
 
-    @Query("SELECT * FROM launch_to_notify_table Where id = :launchId")
+    @Query("SELECT * FROM launch_to_notify_table Where id = :launchId AND isNotifyActive = 1")
     fun getALaunchToNotify(launchId: String):LaunchToNotify?
 
     @Query("SELECT * FROM launch_to_notify_table")

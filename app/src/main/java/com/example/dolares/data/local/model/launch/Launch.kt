@@ -91,7 +91,7 @@ data class Launch(
     val tdb: Boolean?,
     @ColumnInfo(name = "upcoming")
     @SerializedName("upcoming")
-    val upcoming: Boolean?,
+    var upcoming: Boolean?,
     @ColumnInfo(name = "window")
     @SerializedName("window")
     val window: Int?

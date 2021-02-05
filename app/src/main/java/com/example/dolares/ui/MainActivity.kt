@@ -2,7 +2,6 @@ package com.example.dolares.ui
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -11,9 +10,11 @@ import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.example.dolares.R
+import com.example.dolares.util.DAILY_LAUNCHES_NOTIFICATION_WORKING_TAG
 import com.example.dolares.util.LAUNCHES_NOTIFICATIONS_KEY
-import com.example.dolares.util.NOTIFICATION_WORKING_TAG
-import com.example.dolares.workers.NotificationLaunchesWorker
+import com.example.dolares.util.USERS_LAUNCHES_NOTIFICATION_WORKING_TAG
+import com.example.dolares.workers.NotificationDailyLaunchesWorker
+import com.example.dolares.workers.NotificationUsersSelectedLaunchesWorker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.android.ext.android.inject
 import java.util.concurrent.TimeUnit
@@ -69,23 +70,42 @@ class MainActivity : AppCompatActivity() {
             false
         )
         if(isNotificationWanted){
-            setLaunchesNotificationsWork()
+            setUsersLaunchesNotificationsWork()
+            setDailyLaunchesNotificationsWork()
         }else{
-            deleteLaunchesNotificationsWork()
+            deleteUsersLaunchesNotificationsWork()
+            deleteDailyLaunchesNotificationsWork()
         }
     }
 
-    private fun deleteLaunchesNotificationsWork() {
-            WorkManager.getInstance(this).cancelUniqueWork(NOTIFICATION_WORKING_TAG)
+    private fun deleteUsersLaunchesNotificationsWork() {
+            WorkManager.getInstance(this).cancelUniqueWork(USERS_LAUNCHES_NOTIFICATION_WORKING_TAG)
     }
 
-    private fun setLaunchesNotificationsWork() {
-        val notificationWorker = PeriodicWorkRequestBuilder<NotificationLaunchesWorker>(1,TimeUnit.MINUTES)
-            .addTag(NOTIFICATION_WORKING_TAG)
+    private fun setUsersLaunchesNotificationsWork() {
+        val notificationWorker = PeriodicWorkRequestBuilder<NotificationUsersSelectedLaunchesWorker>(1,TimeUnit.MINUTES)
+            .addTag(USERS_LAUNCHES_NOTIFICATION_WORKING_TAG)
             .build()
 
         WorkManager.getInstance(applicationContext).enqueueUniquePeriodicWork(
-            NOTIFICATION_WORKING_TAG,
+            USERS_LAUNCHES_NOTIFICATION_WORKING_TAG,
+            ExistingPeriodicWorkPolicy.REPLACE,
+            notificationWorker
+        )
+
+    }
+
+    private fun deleteDailyLaunchesNotificationsWork() {
+        WorkManager.getInstance(this).cancelUniqueWork(DAILY_LAUNCHES_NOTIFICATION_WORKING_TAG)
+    }
+
+    private fun setDailyLaunchesNotificationsWork() {
+        val notificationWorker = PeriodicWorkRequestBuilder<NotificationDailyLaunchesWorker>(1,TimeUnit.DAYS)
+            .addTag(DAILY_LAUNCHES_NOTIFICATION_WORKING_TAG)
+            .build()
+
+        WorkManager.getInstance(applicationContext).enqueueUniquePeriodicWork(
+            DAILY_LAUNCHES_NOTIFICATION_WORKING_TAG,
             ExistingPeriodicWorkPolicy.REPLACE,
             notificationWorker
         )
