@@ -16,7 +16,7 @@ data class Launch(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
     @SerializedName("id")
-    val id: String,
+    val md: String,
     @ColumnInfo(name = "auto_update")
     @SerializedName("auto_update")
     val autoUpdate: Boolean?,

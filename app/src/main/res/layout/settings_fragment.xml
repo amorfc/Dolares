@@ -87,7 +87,6 @@
             android:ems="10"
             android:hint="@string/changeForName"
             android:inputType="textPersonName"
-            android:text="@{}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.53"
             app:layout_constraintStart_toEndOf="@+id/nameTw"
@@ -102,7 +101,7 @@
             android:ems="10"
             android:hint="@string/Email"
             android:inputType="textPersonName"
-            android:text="@{}"
+
             app:layout_constraintBottom_toBottomOf="@+id/textView8"
             app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
             app:layout_constraintHorizontal_bias="0.53"
@@ -130,7 +129,7 @@
             android:id="@+id/loguOut"
             android:layout_width="104dp"
             android:layout_height="51dp"
-            android:onClick="@{}"
+
             android:text="@string/LogOut"
             app:layout_constraintBottom_toBottomOf="@+id/saveChanges"
             app:layout_constraintEnd_toStartOf="@+id/saveChanges"
@@ -142,7 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="200dp"
-            android:onClick="@{}"
+
             android:text="@string/save_changes"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

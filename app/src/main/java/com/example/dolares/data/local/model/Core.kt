@@ -9,7 +9,7 @@ import androidx.room.TypeConverters
 import com.example.dolares.data.local.converters.LaunchesListToStringConverter
 import com.example.dolares.data.local.converters.ListOfStringToJsonConverter
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Entity(tableName = "cores_table")
@@ -17,7 +17,7 @@ data class Core(
     @PrimaryKey(autoGenerate = false)
     @SerializedName("id")
     @ColumnInfo(name = "id")
-    val id: String,
+    val md: String,
     @SerializedName("asds_attempts")
     @ColumnInfo(name = "asds_attempts")
     val asdsAttempts: Int?,

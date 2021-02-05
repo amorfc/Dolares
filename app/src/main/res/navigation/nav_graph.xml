@@ -9,7 +9,7 @@
         android:id="@+id/capsulesFragment"
         android:name="com.example.dolares.ui.capsules.CapsulesFragment"
         android:label="capsules_fragment"
-        tools:layout="@layout/capsules_fragment" >
+         >
         <action
             android:id="@+id/action_capsulesFragment_to_capsuleDetailsFragment"
             app:destination="@id/capsuleDetailsFragment" />
@@ -38,7 +38,7 @@
         android:id="@+id/capsuleDetailsFragment"
         android:name="com.example.dolares.ui.capsules.CapsuleDetailsFragment"
         android:label="fragment_capsule_details"
-        tools:layout="@layout/fragment_capsule_details" >
+         >
         <argument
             android:name="parcelableCapsule"
             app:argType="com.example.dolares.data.local.model.Capsule" />

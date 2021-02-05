@@ -55,6 +55,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:tooltipText="SLKDHFSJŞDKFSDLF" />
+
         </LinearLayout>
 
             <LinearLayout
@@ -70,10 +71,7 @@
                     android:layout_marginStart="300dp"
                     android:contentDescription="@string/launchlistImage"
                     android:src="@drawable/ic_launcher_background" />
-
-
-
-        </LinearLayout>
+            </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>
