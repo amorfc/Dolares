@@ -38,7 +38,7 @@ class LaunchAdapter(val clickListener: LaunchItemClickListener): ListAdapter<Lau
 
     class LaunchesDiffCallBack:DiffUtil.ItemCallback<Launch>() {
         override fun areItemsTheSame(oldItem: Launch, newItem: Launch): Boolean {
-            return oldItem.md == newItem.md
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Launch, newItem: Launch): Boolean {

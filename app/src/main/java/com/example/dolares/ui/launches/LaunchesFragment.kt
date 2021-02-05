@@ -78,7 +78,7 @@ class LaunchesFragment : Fragment() {
 
     private fun adapterInit(){
         val launchItemClickListener = LaunchAdapter.LaunchItemClickListener{
-            viewModel.navigateSelectedLaunchDetailsScreen(launchId = it.md)
+            viewModel.navigateSelectedLaunchDetailsScreen(launchId = it.id)
         }
         val adapter = LaunchAdapter(launchItemClickListener)
         binding.launchesRV.adapter = adapter
