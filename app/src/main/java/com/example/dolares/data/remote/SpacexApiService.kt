@@ -17,7 +17,7 @@ interface SpacexApiService {
     suspend fun getAllCores(): Response<List<Core>>
 
     @GET("launches")
-    suspend fun getAllLaunches(): Response<List<Launch>>
+    suspend fun getAllLaunches(): Response<MutableList<Launch>>
 
     @GET("launchpads")
     suspend fun getAllLaunchPads(): Response<List<LaunchPad>>

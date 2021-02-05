@@ -16,7 +16,7 @@ data class Launch(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
     @SerializedName("id")
-    val id: String,
+    var id: String,
     @ColumnInfo(name = "auto_update")
     @SerializedName("auto_update")
     val autoUpdate: Boolean?,
@@ -38,7 +38,7 @@ data class Launch(
     val datePrecision: String?,
     @ColumnInfo(name = "date_unix")
     @SerializedName("date_unix")
-    val dateUnix: Long?,
+    var dateUnix: Long?,
     @ColumnInfo(name = "date_utc")
     @SerializedName("date_utc")
     val dateUtc: String?,
@@ -63,7 +63,7 @@ data class Launch(
     val links: Links?,
     @ColumnInfo(name = "name")
     @SerializedName("name")
-    val name: String?,
+    var name: String?,
     @ColumnInfo(name = "net")
     @SerializedName("net")
     val net: Boolean?,

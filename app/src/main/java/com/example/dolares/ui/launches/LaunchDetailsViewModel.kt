@@ -63,7 +63,7 @@ class LaunchDetailsViewModel(
         val launchTimeMillis = launch.dateUnix!!.toLong() * 1000
         val currentTimeMillis = System.currentTimeMillis()
 
-        val launchCountDownMillis = launchTimeMillis!! - currentTimeMillis
+        val launchCountDownMillis = launchTimeMillis - currentTimeMillis
 
         val timer = object : CountDownTimer(launchCountDownMillis, COUNT_DOWN_INTERVAL) {
 

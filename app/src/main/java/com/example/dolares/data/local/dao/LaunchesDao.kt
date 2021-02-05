@@ -34,4 +34,7 @@ interface LaunchesDao {
 
     @Query("SELECT * FROM launch_to_notify_table Where id = :launchId")
     fun getALaunchToNotify(launchId: String):LaunchToNotify?
+
+    @Query("SELECT * FROM launch_to_notify_table")
+    fun getAllLaunchToNotify():List<LaunchToNotify>
 }

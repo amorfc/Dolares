@@ -37,4 +37,6 @@
     <string name="UserName" />
     <string name="image">Image</string>
     <string name="upcoming_notifications">If you wanna notification about the all upcoming launches</string>
+    <string name="user_launch_notification_title">New Rocket Launch -> </string>
+    <string name="user_launch_notification_content">In 15 minutes there is a new Launch.Flight number is </string>
 </resources>
