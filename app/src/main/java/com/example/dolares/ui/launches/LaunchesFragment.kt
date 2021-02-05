@@ -1,6 +1,5 @@
 package com.example.dolares.ui.launches
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -79,7 +78,7 @@ class LaunchesFragment : Fragment() {
 
     private fun adapterInit(){
         val launchItemClickListener = LaunchAdapter.LaunchItemClickListener{
-            viewModel.navigateSelectedLaunchDetailsScreen(launchId = it.id)
+            viewModel.navigateSelectedLaunchDetailsScreen(launchId = it.md)
         }
         val adapter = LaunchAdapter(launchItemClickListener)
         binding.launchesRV.adapter = adapter

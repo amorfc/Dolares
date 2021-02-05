@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dolares.data.local.model.launch.Launch
 import com.example.dolares.databinding.LaunchesListItemBinding
-import com.example.dolares.ui.cores.CoresAdapter
 
 
 class LaunchAdapter(val clickListener: LaunchItemClickListener): ListAdapter<Launch,LaunchAdapter.LaunchViewHolder>(LaunchesDiffCallBack()) {
@@ -39,7 +38,7 @@ class LaunchAdapter(val clickListener: LaunchItemClickListener): ListAdapter<Lau
 
     class LaunchesDiffCallBack:DiffUtil.ItemCallback<Launch>() {
         override fun areItemsTheSame(oldItem: Launch, newItem: Launch): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.md == newItem.md
         }
 
         override fun areContentsTheSame(oldItem: Launch, newItem: Launch): Boolean {

@@ -85,7 +85,7 @@ class CapsulesDiffCallback : DiffUtil.ItemCallback<DataItem>() {
 sealed class DataItem {
     data class CapsuleItem(val capsule: Capsule) : DataItem() {
         override val id: String
-            get() = capsule.id
+            get() = capsule.md
     }
 
     abstract val id: String

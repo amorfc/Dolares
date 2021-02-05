@@ -13,7 +13,7 @@ data class LaunchPad(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
     @SerializedName("id")
-    override val id: String,
+     val md: String,
     @ColumnInfo(name = "full_name")
     @SerializedName("full_name")
     val fullName: String?,
@@ -52,4 +52,4 @@ data class LaunchPad(
     @ColumnInfo(name = "timezone")
     @SerializedName("timezone")
     val timezone: String?
-):BaseModel()
+)

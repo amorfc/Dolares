@@ -11,50 +11,43 @@
             name="core"
             type="com.example.dolares.data.local.model.Core" />
     </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/indir">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_margin="5dp"
         android:clickable="true"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="3dp"
-        android:foreground="@color/grey"
-        >
-        <LinearLayout
-            android:id="@+id/Linear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        app:cardCornerRadius="9dp"
 
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{core.reuseCount.toString()}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:onClick="@{()->clickListener.onClick(core)}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.009">
 
             <LinearLayout
                 android:id="@+id/Linear1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/isActive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="200dp"
-                    android:text="@{core.status}"
-                    android:textAlignment="viewStart"
+                    android:layout_marginStart="10dp"
+                    android:onClick="@{()->clickListener.onClick(core)}"
+                    android:text="@{core.serial}"
+                    android:textAlignment="viewEnd"
                     android:textColor="@color/black"
                     android:textSize="20sp"
+                    android:textStyle="bold"
                     android:tooltipText="lkdflkdfd" />
 
 
@@ -62,11 +55,13 @@
                     android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{core.lastUpdate.toString()}"
+                    android:layout_marginTop="7dp"
+                    android:text="@{core.lastUpdate}"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:tooltipText="SLKDHFSJŞDKFSDLF" />
             </LinearLayout>
-        </LinearLayout>
+
     </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
