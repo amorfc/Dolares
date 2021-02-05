@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <data>
+            <variable
+                name="clickListener"
+                type="com.example.dolares.ui.capsules.CapsulesAdapter.CapsulesClickListener" />
+        <variable
+            name="capsule"
+            type="com.example.dolares.data.local.model.Capsule" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:clickable="true"
+        android:onClick="@{()->clickListener.onClick(capsule)}"
+        android:foreground="@color/grey"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp">
+
+        <LinearLayout
+            android:id="@+id/Linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{capsule.type}"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:tooltipText="LDFSŞFKŞSŞDLFSDFŞİSDÇF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/Linear1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/isActive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="200dp"
+                    android:text="@{capsule.status}"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:tooltipText="lkdflkdfd" />
+
+                <TextView
+                    android:id="@+id/tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{capsule.serial}"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:tooltipText="LKHSDFHDJŞKDAŞSLDASD" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{capsule.lastUpdate}"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:tooltipText="SLKDHFSJŞDKFSDLF" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>

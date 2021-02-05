@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/capsulesFragment"
+        android:title="@string/Capsule"
+        android:enabled="true"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_access_alarms_24"/>
+    <item
+        android:id="@+id/coresFragment"
+        android:title="@string/Cores"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_sentiment_dissatisfied_24"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/launchesFragment"
+        android:title="@string/Launches"
+        android:enabled="true"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_access_alarms_24"/>
+    <item
+        android:id="@+id/launchPadsFragment"
+        android:title="@string/Launchpads"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_account_balance_24"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/settingsFragment"
+        android:title="@string/Settings"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_settings_24"
+        app:showAsAction="always"/>
+
+
+</menu>

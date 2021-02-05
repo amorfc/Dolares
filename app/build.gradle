@@ -1,9 +1,11 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
     id 'kotlin-kapt'
     id "androidx.navigation.safeargs.kotlin"
     id "org.jlleitschuh.gradle.ktlint"
+    id "kotlin-parcelize"
 }
 
 android {
@@ -12,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.dolares"
-        minSdkVersion 28
+        minSdkVersion 29
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -33,6 +35,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+
+        dataBinding true
+    }
 }
 
 dependencies {
@@ -42,10 +48,20 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-auth:20.0.0'
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
+    //Preferences
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+    //Work Manager
+    implementation "androidx.work:work-runtime-ktx:$rootProject.work_version"
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:26.4.0')
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+    //Room
     implementation "androidx.room:room-runtime:$rootProject.room_version"
     kapt "androidx.room:room-compiler:$rootProject.room_version"
     implementation "androidx.room:room-ktx:$rootProject.room_version"
@@ -62,8 +78,7 @@ dependencies {
     //Dependency Injection
     implementation "org.koin:koin-android:$rootProject.koin_version"
     implementation "org.koin:koin-androidx-viewmodel:$rootProject.koin_version"
-    //Timber
-    implementation "com.jakewharton.timber:timber:$rootProject.timber_version"
+
     // Picasso
     implementation "com.squareup.picasso:picasso:$rootProject.picasso_version"
     //Material

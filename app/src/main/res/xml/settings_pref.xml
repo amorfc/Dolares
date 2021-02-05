@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+            android:title="General Preferences">
+
+        <SwitchPreference
+            android:key="upcoming_notification_prefs"
+            android:title="@string/upcoming_notifications"
+            android:summaryOn="Enabled"
+            android:summaryOff="Disabled"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/capsulesFragment">
+
+    <fragment
+        android:id="@+id/capsulesFragment"
+        android:name="com.example.dolares.ui.capsules.CapsulesFragment"
+        android:label="capsules_fragment"
+        tools:layout="@layout/capsules_fragment" >
+        <action
+            android:id="@+id/action_capsulesFragment_to_capsuleDetailsFragment"
+            app:destination="@id/capsuleDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coresFragment"
+        android:name="com.example.dolares.ui.cores.CoresFragment"
+        android:label="CoresFragment" >
+        <action
+            android:id="@+id/action_coresFragment_to_coreDetailsFragment"
+            app:destination="@id/coreDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/launchesFragment"
+        android:name="com.example.dolares.ui.launches.LaunchesFragment"
+        android:label="LaunchesFragment" >
+        <action
+            android:id="@+id/action_launchesFragment_to_launchDetailsFragment"
+            app:destination="@id/launchDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/capsuleDetailsFragment"
+        android:name="com.example.dolares.ui.capsules.CapsuleDetailsFragment"
+        android:label="fragment_capsule_details">
+        <argument
+            android:name="parcelableCapsule"
+            app:argType="com.example.dolares.data.local.model.Capsule" />
+    </fragment>
+    <fragment
+        android:id="@+id/coreDetailsFragment"
+        android:name="com.example.dolares.ui.cores.CoreDetailsFragment"
+        android:label="CoreDetailsFragment" >
+        <argument
+            android:name="parcelableCore"
+            app:argType="com.example.dolares.data.local.model.Core" />
+    </fragment>
+    <fragment
+        android:id="@+id/launchDetailsFragment"
+        android:name="com.example.dolares.ui.launches.LaunchDetailsFragment"
+        android:label="LaunchDetailsFragment" >
+        <argument
+            android:name="launchId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.dolares.ui.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_capsulesFragment"
+            app:destination="@id/capsulesFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.dolares.ui.register.RegisterFragment"
+        android:label="RegisterFragment" >
+        <action
+            android:id="@+id/action_registerFragment_to_capsulesFragment"
+            app:destination="@id/capsulesFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.dolares.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+</navigation>
