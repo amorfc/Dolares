@@ -14,7 +14,10 @@ class MyWorkerFactory : WorkerFactory() {
     ): ListenableWorker? {
         // This only handles a single Worker, please don’t do this!!
         // See below for a better way using DelegatingWorkerFactory
-        return NotificationLaunchesWorker(appContext, workerParameters)
+        return when(workerClassName){
+            NotificationLaunchesWorker::class.java.name -> NotificationLaunchesWorker(appContext, workerParameters)
+            else -> null
+        }
 
     }
 }

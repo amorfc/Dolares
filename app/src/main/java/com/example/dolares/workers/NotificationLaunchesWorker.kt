@@ -21,7 +21,7 @@ import kotlinx.coroutines.withContext
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-class NotificationLaunchesWorker(val ctx:Context,params: WorkerParameters) :CoroutineWorker(ctx,params),KoinComponent{
+class NotificationLaunchesWorker(private val ctx:Context, params: WorkerParameters) :CoroutineWorker(ctx,params),KoinComponent{
 
     private val launchesDao: LaunchesDao by inject()
 
@@ -52,6 +52,7 @@ class NotificationLaunchesWorker(val ctx:Context,params: WorkerParameters) :Coro
             .setContentIntent(pendingIntent)
             .setContentText("Launches interval is 15 minutes")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
         val notificationManager: NotificationManager = applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
         createNotificationChannel(notificationManager)

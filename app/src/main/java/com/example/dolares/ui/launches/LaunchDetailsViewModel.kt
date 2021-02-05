@@ -7,11 +7,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dolares.data.local.model.launch.Launch
+import com.example.dolares.data.local.model.launch.LaunchToNotify
 import com.example.dolares.data.repository.LaunchDetailsRepository
 import com.example.dolares.util.COUNT_DOWN_INTERVAL
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class LaunchDetailsViewModel(
     private val launchDetailsRepository: LaunchDetailsRepository
@@ -28,6 +30,10 @@ class LaunchDetailsViewModel(
 
     val selectedLaunch: MutableLiveData<Launch?> = MutableLiveData()
 
+    private val _isLaunchNotifyActive: MutableLiveData<Boolean> = MutableLiveData()
+    val isLaunchNotifyActive:LiveData<Boolean>
+        get() = _isLaunchNotifyActive
+
     fun fetchSelectedLaunch(launchId: String) = viewModelScope.launch(Dispatchers.IO) {
         launchDetailsRepository.getALaunch(launchId)
             .collect {
@@ -38,7 +44,18 @@ class LaunchDetailsViewModel(
                         setTimer(it)
                     }
                 }
+                //Notify Status Handling
+                handleALaunchNotifyStatus(launchId)
             }
+    }
+
+    private suspend fun handleALaunchNotifyStatus(launchId: String){
+        val launchToNotify:LaunchToNotify?  = launchDetailsRepository.getIfNotifyLaunchExist(launchId)
+        launchToNotify?.let {
+            _isLaunchNotifyActive.postValue(launchToNotify.isNotifyActive)
+            return
+        }
+        _isLaunchNotifyActive.postValue(false)
     }
 
     private fun setTimer(launch: Launch) {
@@ -61,5 +78,18 @@ class LaunchDetailsViewModel(
         timer.start()
     }
 
+    fun changeNotifyStatus(launchId: String) = viewModelScope.launch {
 
+        val launchToNotify:LaunchToNotify? = launchDetailsRepository.getIfNotifyLaunchExist(launchId)
+
+        launchToNotify?.let {
+
+            launchDetailsRepository.setLaunchNotifyStatus(launchId,!launchToNotify.isNotifyActive)
+            return@launch
+        }
+
+        launchDetailsRepository.setLaunchNotifyStatus(launchId,true)
+
+        return@launch
+    }
 }

@@ -2,6 +2,7 @@ package com.example.dolares.data.local.dao
 
 import androidx.room.*
 import com.example.dolares.data.local.model.launch.Launch
+import com.example.dolares.data.local.model.launch.LaunchToNotify
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -28,4 +29,9 @@ interface LaunchesDao {
     @Query("SELECT * FROM launches_table WHERE date_unix > :startDateUnix")
     suspend fun getLaunchesAfterNow(startDateUnix: Long): List<Launch>
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertNotifyLaunch(launchToNotify: LaunchToNotify)
+
+    @Query("SELECT * FROM launch_to_notify_table Where id = :launchId")
+    fun getALaunchToNotify(launchId: String):LaunchToNotify?
 }

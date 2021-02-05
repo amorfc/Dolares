@@ -27,7 +27,7 @@ class LaunchDetailsFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater,R.layout.launch_details_fragment, container, false)
 
-        launchId = LaunchDetailsFragmentArgs.fromBundle(arguments!!).launchId
+        launchId = LaunchDetailsFragmentArgs.fromBundle(requireArguments()).launchId
         binding.lifecycleOwner = this
 
         return  binding.root
@@ -38,6 +38,6 @@ class LaunchDetailsFragment : Fragment() {
 
         binding.viewModel = viewModel
         viewModel.fetchSelectedLaunch(launchId)
-
+        //For testing
     }
 }

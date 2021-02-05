@@ -6,8 +6,9 @@ import androidx.room.TypeConverters
 import com.example.dolares.data.local.converters.*
 import com.example.dolares.data.local.dao.*
 import com.example.dolares.data.local.model.launch.Launch
+import com.example.dolares.data.local.model.launch.LaunchToNotify
 
-@Database(entities = [Capsule::class,Core::class,Launch::class,LaunchPad::class],version = 4)
+@Database(entities = [Capsule::class,Core::class,Launch::class,LaunchPad::class,LaunchToNotify::class],version = 9)
 
 @TypeConverters(value=[
     LaunchesListToStringConverter::class,
