@@ -47,7 +47,7 @@ fun setRecyclerViewItem(recyclerView: RecyclerView, items: List<Any>?) {
 @BindingAdapter("setTimerDateFormat")
 fun TextView.setTimerDateFormat(timer:Long){
 
-    var inSeconds = 0L
+    var inSeconds = timer
     val day = inSeconds/86400
     inSeconds %= 86400
 
