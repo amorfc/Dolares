@@ -13,22 +13,45 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#C8E2F8"
+        android:background="#FAD416"
         tools:context=".ui.register.RegisterFragment">
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="212dp"
+            android:layout_height="209dp"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:focusableInTouchMode="false"
+            android:text="@string/dolares"
+            android:textColor="@color/black"
+            android:textSize="42sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/imageView4"
+            app:layout_constraintStart_toStartOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
 
         <EditText
             android:id="@+id/registerEditTextTextPersonName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="@string/your_username"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.507"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <EditText
             android:id="@+id/registerEditTextEmail"
@@ -56,12 +79,12 @@
             app:layout_constraintStart_toStartOf="@+id/registerEditTextEmail"
             app:layout_constraintTop_toBottomOf="@+id/registerEditTextEmail" />
 
-        <TextView
+        <Button
             android:id="@+id/registerFlowButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="#A9EF9C"
+            android:background="@drawable/round_corners"
             android:onClick="@{()->viewModel.registerUser(viewModel.registerForm.useremail,viewModel.registerForm.password,viewModel.registerForm.username)}"
             android:text="@string/register"
             android:textSize="30sp"
@@ -73,8 +96,8 @@
             android:id="@+id/progressBar2"
             style="?android:attr/progressBarStyle"
             registerStatus="@{viewModel.registerStatus}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="87dp"
+            android:layout_height="73dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

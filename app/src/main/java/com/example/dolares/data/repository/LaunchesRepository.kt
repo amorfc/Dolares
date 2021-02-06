@@ -39,7 +39,7 @@ class LaunchesRepository(
                     is IOException -> snackBarMessage.postValue(e.message)
                     else -> {
                         snackBarMessage.postValue("Unexpected Problem Occurred")
-                        Log.i(TAG, "Data couldn't refresh ${e.message}")
+                        Log.e(TAG, "Data couldn't refresh ${e.message}")
                     }
                 }
             }
@@ -163,11 +163,11 @@ class LaunchesRepository(
       "landpad": "5e9e3032383ecb6bb234e7ca"
     }
   ],
-  "id": "5eb87d46ffd86e000604b388"
+  "md": "5eb87d46ffd86e000604b388"
 }"""
         val gson = Gson()
         val testLaunch = gson.fromJson<Launch>(jsonString,Launch::class.java)
-        testLaunch.id = "asdfasdfasdfasdf"
+        testLaunch.md = "asdfasdfasdfasdf"
         testLaunch.name = "Dogus University Test Launch"
         testLaunch.dateUnix = System.currentTimeMillis()/1000L + 840L
         testLaunch.upcoming = true

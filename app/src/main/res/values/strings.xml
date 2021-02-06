@@ -69,4 +69,7 @@
     <string name="launch_success_desc">Launch Success </string>
     <string name="launch_failure_desc">Launch Failed</string>
     <string name="launch_failure_or_success_desc_not_found">No info</string>
+    <string name="please_enter_your_email">Please Enter Your Email</string>
+    <string name="please_enter_your_pass">Please Enter Your Pass</string>
+    <string name="dolares">DOLARES</string>
 </resources>
