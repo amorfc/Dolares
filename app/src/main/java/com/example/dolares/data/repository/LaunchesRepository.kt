@@ -167,7 +167,7 @@ class LaunchesRepository(
 }"""
         val gson = Gson()
         val testLaunch = gson.fromJson<Launch>(jsonString,Launch::class.java)
-        testLaunch.md = "asdfasdfasdfasdf"
+        testLaunch.id = "asdfasdfasdfasdf"
         testLaunch.name = "Dogus University Test Launch"
         testLaunch.dateUnix = System.currentTimeMillis()/1000L + 840L
         testLaunch.upcoming = true

@@ -30,7 +30,7 @@ class LaunchDetailsViewModel(
 
     val selectedLaunch: MutableLiveData<Launch?> = MutableLiveData()
 
-    private val _isLaunchNotifyActive: MutableLiveData<Boolean> = MutableLiveData()
+    private val _isLaunchNotifyActive: MutableLiveData<Boolean> = MutableLiveData(false)
     val isLaunchNotifyActive:LiveData<Boolean>
         get() = _isLaunchNotifyActive
 
@@ -84,6 +84,8 @@ class LaunchDetailsViewModel(
     }
 
     fun changeNotifyStatus(launchId: String) = viewModelScope.launch {
+
+        _isLaunchNotifyActive.value = !_isLaunchNotifyActive.value!!
 
         val launchToNotify:LaunchToNotify? = launchDetailsRepository.getIfNotifyLaunchExist(launchId)
 

@@ -86,7 +86,13 @@ fun TextView.setSuccess(isSuccess:Boolean?){
     this.text = this.context.getString(R.string.launch_failure_or_success_desc_not_found)
 
 }
-
+@BindingAdapter("setNotificationIcon")
+fun ImageView.setNotificationIcon(isNotificationActive:Boolean){
+    if(isNotificationActive) {
+        this.setImageResource(R.drawable.ic_notification_on)
+    }
+    else this.setImageResource(R.drawable.ic_notification_off)
+}
 @BindingAdapter("setListItemLaunchImage")
 fun ImageView.setListItemLaunchImage(launch: Launch?) {
 
