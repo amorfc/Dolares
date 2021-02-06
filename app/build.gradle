@@ -85,5 +85,10 @@ dependencies {
     implementation "com.google.android.material:material:$rootProject.material_version"
     //Coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines_android_version"
+    // Glide for images
+    implementation "com.github.bumptech.glide:glide:$rootProject.version_glide"
+    //Konfetti
+    implementation 'nl.dionsegijn:konfetti:1.2.6'
+
 
 }
