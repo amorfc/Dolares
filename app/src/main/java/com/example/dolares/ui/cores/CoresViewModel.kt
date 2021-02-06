@@ -25,7 +25,10 @@ class CoresViewModel(
     init {
         viewModelScope.launch(Dispatchers.IO){
             coresRepository.getAllCoresFlowFromDb()
-                .collect { allCores.postValue(it) }
+                .collect {
+                    if(it.isNullOrEmpty()) refreshCoreData()
+                    allCores.postValue(it)
+                }
         }
     }
 

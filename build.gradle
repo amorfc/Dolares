@@ -40,6 +40,9 @@ ext{
     picasso_version = '2.71828'
     work_version = "2.5.0"
     version_glide = "4.8.0"
+    test_ext_junit_version = '1.1.1'
+    mockito_kotlin_version = '2.2.0'
+
 
 }
 
