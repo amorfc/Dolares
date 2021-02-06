@@ -27,6 +27,7 @@ class CapsulesViewModel(
         viewModelScope.launch(Dispatchers.IO){
             capsulesRepository.getAllCapsulesFlow()
                 .collect{
+                    if(it.isNullOrEmpty()) refreshData()
                     allCapsules.postValue(it)
                     Log.d("CapsulesViewModel","Fetched All Capsules Successfully ${it}")
                 }

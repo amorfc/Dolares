@@ -28,7 +28,9 @@ class LaunchesViewModel(
     init {
         viewModelScope.launch(Dispatchers.IO){
             launchesRepository.getAllLaunchesFlowFromDb()
-                .collect { allLaunches.postValue(it)
+                .collect {
+                    if(it.isNullOrEmpty()) refreshData()
+                    allLaunches.postValue(it)
                 }
         }
     }
