@@ -10,7 +10,6 @@ import com.example.dolares.data.remote.SpacexApiService
 import com.example.dolares.data.repository.*
 import com.example.dolares.ui.capsules.CapsulesViewModel
 import com.example.dolares.ui.cores.CoresViewModel
-import com.example.dolares.ui.launch_pads.LaunchPadsViewModel
 import com.example.dolares.ui.launches.LaunchDetailsViewModel
 import com.example.dolares.ui.launches.LaunchesViewModel
 import com.example.dolares.ui.login.LoginViewModel
@@ -112,21 +111,6 @@ val launchDetailsModule = module{
         )
     }
     viewModel { LaunchDetailsViewModel(get()) }
-}
-val launchPadsModule = module {
-
-    single { get<SpaceXDatabase>().launchPadsDao() }
-
-    single {
-        LaunchPadsRepository(
-            get(),
-            get(),
-            get()
-        )
-    }
-
-    viewModel { LaunchPadsViewModel(get()) }
-
 }
 
 val userModule = module {

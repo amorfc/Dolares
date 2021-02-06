@@ -45,7 +45,7 @@ class CoresAdapter(val clickListener: CoreItemClickListener) : ListAdapter<Core,
 
     class CoresDiffCallBack : DiffUtil.ItemCallback<Core>() {
         override fun areItemsTheSame(oldItem: Core, newItem: Core): Boolean {
-            return oldItem.md == newItem.md
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Core, newItem: Core): Boolean {

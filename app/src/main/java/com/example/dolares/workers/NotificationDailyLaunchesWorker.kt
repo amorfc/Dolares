@@ -71,7 +71,7 @@ class NotificationDailyLaunchesWorker (private val ctx: Context, params: WorkerP
             )
 
         val builder = NotificationCompat.Builder(applicationContext, CHANNEL_ID)
-            .setSmallIcon(R.drawable.common_full_open_on_phone)
+            .setSmallIcon(R.drawable.ic_rocketspacevehiclenverticalpositionsvgrepocom)
             .setContentTitle(
                 applicationContext.resources.getString(
                     R.string.flight_number_template_in_less_than_24h,

@@ -31,7 +31,6 @@ class DolaresApplication : Application(), Configuration.Provider {
                 capsulesModule,
                 coresModule,
                 launchesModule,
-                launchPadsModule,
                 launchDetailsModule))
         }
     }
