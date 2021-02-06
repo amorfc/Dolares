@@ -17,7 +17,7 @@ data class Core(
     @PrimaryKey(autoGenerate = false)
     @SerializedName("id")
     @ColumnInfo(name = "id")
-    val md: String,
+    val id: String,
     @SerializedName("asds_attempts")
     @ColumnInfo(name = "asds_attempts")
     val asdsAttempts: Int?,

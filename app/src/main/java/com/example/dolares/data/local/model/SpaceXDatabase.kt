@@ -8,7 +8,7 @@ import com.example.dolares.data.local.dao.*
 import com.example.dolares.data.local.model.launch.Launch
 import com.example.dolares.data.local.model.launch.LaunchToNotify
 
-@Database(entities = [Capsule::class,Core::class,Launch::class,LaunchPad::class,LaunchToNotify::class],version = 9)
+@Database(entities = [Capsule::class,Core::class,Launch::class,LaunchToNotify::class],version = 10)
 
 @TypeConverters(value=[
     LaunchesListToStringConverter::class,
@@ -21,5 +21,4 @@ abstract class SpaceXDatabase: RoomDatabase() {
     abstract fun capsulesDao(): CapsulesDao
     abstract fun coreDao(): CoresDao
     abstract fun launchesDao(): LaunchesDao
-    abstract fun launchPadsDao(): LaunchPadsDao
 }

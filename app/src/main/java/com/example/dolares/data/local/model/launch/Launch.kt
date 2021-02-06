@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.example.dolares.data.local.converters.LinksToJsonConverter
 import com.example.dolares.data.local.converters.ListOfStringToJsonConverter
-import com.example.dolares.data.local.model.BaseModel
 import com.google.gson.annotations.SerializedName
 
 

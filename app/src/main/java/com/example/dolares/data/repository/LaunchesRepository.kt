@@ -163,7 +163,7 @@ class LaunchesRepository(
       "landpad": "5e9e3032383ecb6bb234e7ca"
     }
   ],
-  "md": "5eb87d46ffd86e000604b388"
+  "id": "5eb87d46ffd86e000604b388"
 }"""
         val gson = Gson()
         val testLaunch = gson.fromJson<Launch>(jsonString,Launch::class.java)

@@ -11,7 +11,9 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
-
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
     defaultConfig {
         applicationId "com.example.dolares"
         minSdkVersion 29
@@ -55,6 +57,9 @@ dependencies {
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$rootProject.mockito_kotlin_version"
     testImplementation "org.koin:koin-test:$rootProject.koin_version"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.coroutines_android_version"
+    testImplementation "androidx.arch.core:core-testing:$rootProject.arch_version"
+    androidTestImplementation "androidx.work:work-testing:$rootProject.work_manager_version"
+
 
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

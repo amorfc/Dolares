@@ -16,9 +16,9 @@ import com.example.dolares.data.local.dao.LaunchesDao
 import com.example.dolares.data.local.model.launch.Launch
 import com.example.dolares.data.local.model.launch.LaunchToNotify
 import com.example.dolares.ui.MainActivity
-import com.example.dolares.util.USERS_LAUNCHES_WORKER_CHANNEL_ID
-import com.example.dolares.util.USERS_LAUNCHES_NOTIFY_ID
 import com.example.dolares.util.SECONDS_IN_15_MINUTES
+import com.example.dolares.util.USERS_LAUNCHES_NOTIFY_ID
+import com.example.dolares.util.USERS_LAUNCHES_WORKER_CHANNEL_ID
 import com.example.dolares.util.USER_LAUNCH_NOTIFICATION_TAG
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -27,7 +27,8 @@ import org.koin.core.inject
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NotificationUsersSelectedLaunchesWorker(private val ctx:Context, params: WorkerParameters) :CoroutineWorker(ctx,params),KoinComponent{
+class NotificationUsersSelectedLaunchesWorker(private val ctx: Context, params: WorkerParameters) :
+    CoroutineWorker(ctx, params), KoinComponent {
 
     private val launchesDao: LaunchesDao by inject()
 
@@ -40,27 +41,42 @@ class NotificationUsersSelectedLaunchesWorker(private val ctx:Context, params: W
 
             if (launches.isNullOrEmpty() || allLaunchesToNotifyFromTable.isNullOrEmpty()) Result.retry()
 
-            val allLaunchesToNotify:List<Launch> = usersNotifyLaunches(launches,allLaunchesToNotifyFromTable).sortedBy { it.dateUnix }
+            val allLaunchesToNotify: List<Launch> =
+                usersNotifyLaunches(launches, allLaunchesToNotifyFromTable).sortedBy { it.dateUnix }
 
-            val firstUserUpcomingLaunch: Launch = allLaunchesToNotify.first()
-
-            val nextLaunchTime: Long = firstUserUpcomingLaunch.dateUnix ?: 0L
-
-            if (nextLaunchTime == 0L || firstUserUpcomingLaunch.name == null || firstUserUpcomingLaunch.name!!.isBlank()) Result.retry()
-
-            val currentTime = System.currentTimeMillis() / 1000
-
-            if (nextLaunchTime - currentTime < SECONDS_IN_15_MINUTES) {
-
-                fireNotification(firstUserUpcomingLaunch.flightNumber, nextLaunchTime, firstUserUpcomingLaunch.name,firstUserUpcomingLaunch.id)
-
-                Log.i(USER_LAUNCH_NOTIFICATION_TAG, "User Launch Notification Fired")
-
-            }
+            if (allLaunchesToNotify.isNullOrEmpty()) {
                 Result.success()
+            } else {
+                val firstUserUpcomingLaunch: Launch = allLaunchesToNotify.first()
+
+                val nextLaunchTime: Long = firstUserUpcomingLaunch.dateUnix ?: 0L
+
+                if (nextLaunchTime == 0L || firstUserUpcomingLaunch.name == null || firstUserUpcomingLaunch.name!!.isBlank()) Result.retry()
+
+                val currentTime = System.currentTimeMillis() / 1000
+
+                if (nextLaunchTime - currentTime < SECONDS_IN_15_MINUTES) {
+
+                    fireNotification(
+                        firstUserUpcomingLaunch.flightNumber,
+                        nextLaunchTime,
+                        firstUserUpcomingLaunch.name,
+                        firstUserUpcomingLaunch.id
+                    )
+
+                    Log.i(USER_LAUNCH_NOTIFICATION_TAG, "User Launch Notification Fired")
+
+                }
+                Result.success()
+            }
         }
 
-    private fun fireNotification(flightNumber: Int?, nextLaunchTime: Long, name: String?,launchId:String) {
+    private fun fireNotification(
+        flightNumber: Int?,
+        nextLaunchTime: Long,
+        name: String?,
+        launchId: String
+    ) {
 
         val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
         simpleDateFormat.timeZone = Calendar.getInstance().timeZone
@@ -70,48 +86,52 @@ class NotificationUsersSelectedLaunchesWorker(private val ctx:Context, params: W
 
 
         val title = "New Rocket Launch $name"
-        val content ="In $launchTimeLocal minutes there is a new Launch.Flight Number: ${flightNumber.toString()}"
+        val content =
+            "In $launchTimeLocal minutes there is a new Launch.Flight Number: ${flightNumber.toString()}"
 
         val builder = NotificationCompat.Builder(ctx, USERS_LAUNCHES_WORKER_CHANNEL_ID)
-            .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark_focused)
+            .setSmallIcon(R.drawable.ic_rocketspacevehiclenverticalpositionsvgrepocom)
             .setContentTitle(title)
             .setContentIntent(pendingIntent)
             .setContentText(content)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
-        val notificationManager: NotificationManager = applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager: NotificationManager =
+            applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
         createNotificationChannel(notificationManager)
-        notificationManager.notify(USERS_LAUNCHES_NOTIFY_ID,builder.build())
+        notificationManager.notify(USERS_LAUNCHES_NOTIFY_ID, builder.build())
     }
 
-    private suspend fun getAllLaunchesFromDb():List<Launch>{
+    private suspend fun getAllLaunchesFromDb(): List<Launch> {
         val currentTime = System.currentTimeMillis() / 1000
 
         return launchesDao.getLaunchesAfterNow(currentTime).sortedBy { it.dateUnix }
     }
 
-    private fun getAllLaunchesToNotifyFromDb():List<LaunchToNotify>{
+    private fun getAllLaunchesToNotifyFromDb(): List<LaunchToNotify> {
         val currentTime = System.currentTimeMillis() / 1000
 
         return launchesDao.getAllLaunchToNotify()
     }
+
     private fun createNotificationChannel(notificationManager: NotificationManager) {
 
         val name = "NotificationUserLaunchesChannel"
         val descriptionText = "UsersLaunchesNotification"
         val importance = NotificationManager.IMPORTANCE_DEFAULT
-        val channel = NotificationChannel(USERS_LAUNCHES_WORKER_CHANNEL_ID, name, importance).apply {
-            description = descriptionText
-        }
+        val channel =
+            NotificationChannel(USERS_LAUNCHES_WORKER_CHANNEL_ID, name, importance).apply {
+                description = descriptionText
+            }
 
 
         notificationManager.createNotificationChannel(channel)
     }
 
-    private fun tapActionBuilder(launchId: String):PendingIntent{
+    private fun tapActionBuilder(launchId: String): PendingIntent {
         val args = Bundle()
-        args.putString("launchId",launchId)
+        args.putString("launchId", launchId)
         return NavDeepLinkBuilder(applicationContext)
             .setComponentName(MainActivity::class.java)
             .setGraph(R.navigation.nav_graph)
@@ -119,7 +139,13 @@ class NotificationUsersSelectedLaunchesWorker(private val ctx:Context, params: W
             .setArguments(args)
             .createPendingIntent()
     }
-    private fun usersNotifyLaunches(apiLaunches:List<Launch>,notifyLaunches:List<LaunchToNotify>):List<Launch>{
-        return apiLaunches.filter { notifyLaunches.map {launchToNotify ->  launchToNotify.id }.contains(it.id) }
+
+    private fun usersNotifyLaunches(
+        apiLaunches: List<Launch>,
+        notifyLaunches: List<LaunchToNotify>
+    ): List<Launch> {
+        return apiLaunches.filter {
+            notifyLaunches.map { launchToNotify -> launchToNotify.id }.contains(it.id)
+        }
     }
 }

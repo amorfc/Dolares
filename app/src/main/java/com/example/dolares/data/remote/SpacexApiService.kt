@@ -19,9 +19,6 @@ interface SpacexApiService {
     @GET("launches")
     suspend fun getAllLaunches(): Response<MutableList<Launch>>
 
-    @GET("launchpads")
-    suspend fun getAllLaunchPads(): Response<List<LaunchPad>>
-
 //    @GET("launches")
 //    suspend fun getSpecificLaunch(@Query("id")launchId:String):Response<Launch>
 
