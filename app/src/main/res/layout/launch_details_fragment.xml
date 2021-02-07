@@ -109,18 +109,6 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/textView18"
                 app:layout_constraintTop_toTopOf="@+id/textView17" />
-
-            <TextView
-                android:id="@+id/youtubeid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:text="@{viewModel.selectedLaunch.links.youtubeId.toString()}"
-                app:layout_constraintBottom_toBottomOf="@+id/textView34"
-                app:layout_constraintEnd_toStartOf="@+id/textView34"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@+id/textView34"
-                app:layout_constraintTop_toTopOf="@+id/textView34" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

@@ -195,7 +195,9 @@ fun ImageView.setRandomImage(itemId:String){
             "https://live.staticflickr.com/65535/49955609618_4cca01d581_o.jpg",
             "https://live.staticflickr.com/65535/49956396622_975c116b71_o.jpg",
             "https://live.staticflickr.com/65535/49955609378_9b77e5c771_o.jpg",
-            "https://live.staticflickr.com/65535/49956396262_ef41c1d9b0_o.jpg")
+            "https://live.staticflickr.com/65535/49956396262_ef41c1d9b0_o.jpg",
+            "https://assets.thehansindia.com/h-upload/feeds/2019/05/03/170678-space.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFtxSOq-cnN8OZaETVx6aCUfKLIruNq0eUnA&usqp=CAU")
         val randomLink = linksOfAllRandomPhotos.random()
 
         Glide.with(this.context)
