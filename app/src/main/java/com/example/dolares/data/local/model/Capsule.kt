@@ -13,7 +13,7 @@ data class Capsule(
     @PrimaryKey(autoGenerate = false)
     @SerializedName("id")
     @ColumnInfo(name = "id")
-    val md: String,
+    val id: String,
     @SerializedName("land_landings")
     @ColumnInfo(name = "land_landings")
     val landLandings: Int?,

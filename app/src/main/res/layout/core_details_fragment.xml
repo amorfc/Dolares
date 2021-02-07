@@ -8,6 +8,9 @@
             name="viewModel"
             type="com.example.dolares.ui.cores.CoreDetailsViewModel" />
     </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Constrain"
@@ -23,7 +26,7 @@
             android:layout_height="150dp"
             android:layout_marginTop="8dp"
             android:contentDescription="@string/image"
-            android:src="@drawable/ic_rocketspacevehiclenverticalpositionsvgrepocom"
+            app:setRandomImage="@{viewModel.selectedCore.id}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -265,7 +268,7 @@
             android:id="@+id/textView15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-light"
             android:text="@string/Details"
             android:textColor="@color/white"
@@ -275,19 +278,22 @@
             app:layout_constraintTop_toBottomOf="@+id/textView36" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="32dp"
+            android:layout_marginBottom="10dp"
             android:text="@{viewModel.selectedCore.lastUpdate}"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="12sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/textView15"
             app:layout_constraintHorizontal_bias="0.407"
             app:layout_constraintStart_toStartOf="@+id/textView15"
             app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
