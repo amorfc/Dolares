@@ -165,27 +165,16 @@ fun setProgressBarStatus(view: View, status: AuthStatus?) {
     }
 }
 
-@BindingAdapter("setTimer")
-fun setTimerText(tw: TextView, time: Long) {
-
-    when (time) {
-
-        0L -> {
-            tw.visibility = View.GONE
-        }
-        else -> {
-            tw.visibility = View.VISIBLE
-            tw.text = time.toString()
-        }
-    }
-
-}
-
 @BindingAdapter("setRandomImage")
 fun ImageView.setRandomImage(itemId:String){
 
         val linksOfAllRandomPhotos = listOf<String>("https://live.staticflickr.com/65535/49927519643_b43c6d4c44_o.jpg",
             "https://live.staticflickr.com/65535/49927519588_8a39a3994f_o.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjrJ6Cm3bN5owwGlkdzwZjVCaeYl-0kB4xDw&usqp=CAU",
+            "https://www.seekpng.com/png/small/246-2460944_free-png-space-exploration-rocket-png-images-transparent.png",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPV4Z-V4fvoAMuiQVK7qmyOXudN4VYBH8oYw&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmlMElJ0DY0EpxBGW4goaSBgHYLzGhUNm3EQ&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ77PQsYw4Fs_TqeQJ9eFZ07bnmf4KlqNEYkQ&usqp=CAU",
             "https://live.staticflickr.com/65535/49928343022_6fb33cbd9c_o.jpg",
             "https://live.staticflickr.com/65535/49934168858_cacb00d790_o.jpg",
             "https://live.staticflickr.com/65535/49934682271_fd6a31becc_o.jpg",
