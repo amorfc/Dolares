@@ -15,7 +15,6 @@ import org.junit.*
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
-import com.example.dolares.getValue
 
 
 
