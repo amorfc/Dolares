@@ -1,6 +1,7 @@
 package com.example.dolares.util
 
 import android.graphics.Color
+import android.media.Image
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -178,4 +179,32 @@ fun setTimerText(tw: TextView, time: Long) {
         }
     }
 
+}
+
+@BindingAdapter("setRandomImage")
+fun ImageView.setRandomImage(itemId:String){
+
+        val linksOfAllRandomPhotos = listOf<String>("https://live.staticflickr.com/65535/49927519643_b43c6d4c44_o.jpg",
+            "https://live.staticflickr.com/65535/49927519588_8a39a3994f_o.jpg",
+            "https://live.staticflickr.com/65535/49928343022_6fb33cbd9c_o.jpg",
+            "https://live.staticflickr.com/65535/49934168858_cacb00d790_o.jpg",
+            "https://live.staticflickr.com/65535/49934682271_fd6a31becc_o.jpg",
+            "https://live.staticflickr.com/65535/49956109906_f88d815772_o.jpg",
+            "https://live.staticflickr.com/65535/49956109706_cffa847208_o.jpg",
+            "https://live.staticflickr.com/65535/49956109671_859b323ede_o.jpg",
+            "https://live.staticflickr.com/65535/49955609618_4cca01d581_o.jpg",
+            "https://live.staticflickr.com/65535/49956396622_975c116b71_o.jpg",
+            "https://live.staticflickr.com/65535/49955609378_9b77e5c771_o.jpg",
+            "https://live.staticflickr.com/65535/49956396262_ef41c1d9b0_o.jpg")
+        val randomLink = linksOfAllRandomPhotos.random()
+
+        Glide.with(this.context)
+            .load(randomLink)
+            .apply(
+                RequestOptions()
+                    .placeholder(R.drawable.loading_animation)
+                    .error(R.drawable.ic_broken_image)
+            )
+            .into(this)
+        return
 }
