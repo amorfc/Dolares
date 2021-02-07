@@ -81,11 +81,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/isActive"
                 app:layout_constraintStart_toStartOf="@+id/isActive"
                 app:layout_constraintTop_toTopOf="@+id/isActive" />
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
