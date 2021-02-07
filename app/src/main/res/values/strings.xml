@@ -74,4 +74,9 @@
     <string name="dolares">DOLARES</string>
     <string name="asds_attempt">ASDS ATTEMPT</string>
     <string name="flight_number_text">Flight Number:</string>
+    <string name="youtube_link_text">Youtube</string>
+    <string name="wikipedia_link_text">Wikipedia</string>
+    <string name="reddit_link_text">Reddit</string>
+    <string name="no_links">There is no Link</string>
+
 </resources>

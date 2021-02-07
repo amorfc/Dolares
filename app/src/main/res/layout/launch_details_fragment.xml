@@ -10,105 +10,159 @@
             type="com.example.dolares.ui.launches.LaunchDetailsViewModel" />
     </data>
 
-    <ScrollView
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+        <!--            <nl.dionsegijn.konfetti.KonfettiView-->
+        <!--                android:id="@+id/viewKonfetti"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                app:triggerKonfetti="@{viewModel.timer}"/>-->
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@{viewModel.selectedLaunch.name}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/name" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@{viewModel.selectedLaunch.flightNumber.toString()}"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/textView18"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView19"
+            app:layout_constraintTop_toBottomOf="@+id/textView18"
+            tools:text="@string/flight_number" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="70dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@+id/textView18"
+            app:layout_constraintStart_toStartOf="@+id/textView18"
+            app:layout_constraintTop_toBottomOf="@+id/textView18"
+            app:setLaunchImage="@{viewModel.selectedLaunch}"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:onClick="@{()->viewModel.changeNotifyStatus(viewModel.selectedLaunch.id)}"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            app:setNotificationIcon="@{viewModel.isLaunchNotifyActive}"
+            app:srcCompat="@drawable/ic_notification_on" />
+
+        <TextView
+            android:id="@+id/timerDateFormat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="@+id/imageView6"
+            app:layout_constraintStart_toStartOf="@+id/imageView6"
+            app:layout_constraintTop_toBottomOf="@+id/imageView6"
+            app:setTimerDateFormat="@{viewModel.timer}"
+            tools:text="@string/upcoming_notifications" />
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <!--            <nl.dionsegijn.konfetti.KonfettiView-->
-            <!--                android:id="@+id/viewKonfetti"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="match_parent"-->
-            <!--                app:triggerKonfetti="@{viewModel.timer}"/>-->
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@{viewModel.selectedLaunch.dateLocal}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/timerDateFormat"
+            app:layout_constraintStart_toStartOf="@+id/timerDateFormat"
+            app:layout_constraintTop_toBottomOf="@+id/timerDateFormat" />
 
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="@{viewModel.selectedLaunch.name}"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/name" />
-
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:text="@{viewModel.selectedLaunch.flightNumber.toString()}"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="@+id/textView18"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/textView19"
-                app:layout_constraintTop_toBottomOf="@+id/textView18"
-                tools:text="@string/flight_number" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_marginTop="70dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="@+id/textView18"
-                app:layout_constraintStart_toStartOf="@+id/textView18"
-                app:layout_constraintTop_toBottomOf="@+id/textView18"
-                app:setLaunchImage="@{viewModel.selectedLaunch}"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="40dp"
-                android:onClick="@{()->viewModel.changeNotifyStatus(viewModel.selectedLaunch.id)}"
-                app:layout_constraintEnd_toEndOf="@+id/imageView2"
-                app:layout_constraintStart_toStartOf="@+id/imageView2"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                app:setNotificationIcon="@{viewModel.isLaunchNotifyActive}"
-                app:srcCompat="@drawable/ic_notification_on" />
-
-            <TextView
-                android:id="@+id/timerDateFormat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="@+id/imageView6"
-                app:layout_constraintStart_toStartOf="@+id/imageView6"
-                app:layout_constraintTop_toBottomOf="@+id/imageView6"
-                app:setTimerDateFormat="@{viewModel.timer}"
-                tools:text="@string/upcoming_notifications" />
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/flight_number_text"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView17"
+            app:layout_constraintEnd_toStartOf="@+id/textView17"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/textView18"
+            app:layout_constraintTop_toTopOf="@+id/textView17" />
 
 
-            <TextView
-                android:id="@+id/textView34"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="@{viewModel.selectedLaunch.dateLocal}"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/timerDateFormat"
-                app:layout_constraintStart_toStartOf="@+id/timerDateFormat"
-                app:layout_constraintTop_toBottomOf="@+id/timerDateFormat" />
+        <TextView
+            android:id="@+id/youtubeLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="@{viewModel.selectedLaunch.links.webcast}"
+            android:autoLink="web"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/youtubeLinkText"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/youtubeLinkText"
+            app:layout_constraintTop_toBottomOf="@+id/youtubeLinkText" />
 
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/flight_number_text"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView17"
-                app:layout_constraintEnd_toStartOf="@+id/textView17"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@+id/textView18"
-                app:layout_constraintTop_toTopOf="@+id/textView17" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        <TextView
+            android:id="@+id/wikipediaLinkText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:autoLink="web"
+            android:text="@{viewModel.selectedLaunch.links.wikipedia}"
+            app:layout_constraintBottom_toTopOf="@+id/youtubeLinkText"
+            app:layout_constraintEnd_toEndOf="@+id/wikipediaLinkText2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/wikipediaLinkText2"
+            app:layout_constraintTop_toBottomOf="@+id/wikipediaLinkText2" />
+
+        <TextView
+            android:id="@+id/wikipediaLinkText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="@string/wikipedia_link_text"
+            app:layout_constraintBottom_toTopOf="@+id/wikipediaLinkText"
+            app:layout_constraintEnd_toEndOf="@+id/textView34"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/textView34"
+            app:layout_constraintTop_toBottomOf="@+id/timerDateFormat" />
+
+        <TextView
+            android:id="@+id/youtubeLinkText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/youtube_link_text"
+            app:layout_constraintBottom_toTopOf="@+id/youtubeLink"
+            app:layout_constraintEnd_toEndOf="@+id/wikipediaLinkText"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/wikipediaLinkText"
+            app:layout_constraintTop_toBottomOf="@+id/wikipediaLinkText" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--    </ScrollView>-->
 </layout>

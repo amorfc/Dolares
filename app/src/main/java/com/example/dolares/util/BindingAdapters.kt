@@ -20,6 +20,7 @@ import com.example.dolares.ui.launches.LaunchAdapter
 import nl.dionsegijn.konfetti.KonfettiView
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
+import org.w3c.dom.Text
 
 
 @BindingAdapter("submitNewList")
@@ -154,6 +155,18 @@ fun TextView.setTimerDateFormat(timer: Long) {
     this.text =
         this.context.getString(R.string.upcoming_launch_date_format, day, hour, minutes, inSeconds)
 
+}
+@BindingAdapter("setLinks")
+fun TextView.setLinks(link: String?){
+
+    link?.let {
+
+        this.text = link
+
+        return
+    }
+
+    this.text = this.context.getText(R.string.no_links)
 }
 
 @BindingAdapter("registerStatus")
