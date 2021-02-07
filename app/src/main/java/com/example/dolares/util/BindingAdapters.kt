@@ -95,6 +95,19 @@ fun ImageView.setNotificationIcon(isNotificationActive:Boolean){
     }
     else this.setImageResource(R.drawable.ic_notification_off)
 }
+
+@BindingAdapter("notificationVisibility")
+fun ImageView.notificationVisibility(isUpcoming:Boolean?){
+    isUpcoming?.let {
+        if(isUpcoming){
+            this.visibility = View.VISIBLE
+        }else{
+            this.visibility = View.GONE
+        }
+        return
+    }
+    this.visibility = View.GONE
+}
 @BindingAdapter("setListItemLaunchImage")
 fun ImageView.setListItemLaunchImage(launch: Launch?) {
 

@@ -72,6 +72,7 @@
             app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toBottomOf="@+id/imageView2"
             app:setNotificationIcon="@{viewModel.isLaunchNotifyActive}"
+            app:notificationVisibility="@{viewModel.selectedLaunch.upcoming}"
             app:srcCompat="@drawable/ic_notification_on" />
 
         <TextView
