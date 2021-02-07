@@ -67,7 +67,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="40dp"
-                android:onClick="@{()->viewModel.changeNotifyStatus(viewModel.selectedLaunch.id)}"
+                android:onClick="@{()->viewModel.changeNotifyStatus(viewModel.selectedLaunch.md)}"
                 app:layout_constraintEnd_toEndOf="@+id/imageView2"
                 app:layout_constraintStart_toStartOf="@+id/imageView2"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2"
@@ -88,6 +88,7 @@
 
 
             <TextView
+                android:id="@+id/textView34"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -109,7 +110,25 @@
                 app:layout_constraintStart_toStartOf="@+id/textView18"
                 app:layout_constraintTop_toTopOf="@+id/textView17" />
 
-
+            <TextView
+                android:id="@+id/youtubeid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:text="@{viewModel.selectedLaunch.links.youtubeId.toString()}"
+                app:layout_constraintBottom_toBottomOf="@+id/textView34"
+                app:layout_constraintEnd_toStartOf="@+id/textView34"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/textView34"
+                app:layout_constraintTop_toTopOf="@+id/textView34" />
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.LegacyYouTubePlayerView
+                android:id="@+id/webview"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="@+id/youtubeid"
+                app:layout_constraintStart_toStartOf="@+id/youtubeid"
+                app:layout_constraintTop_toBottomOf="@+id/youtubeid"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

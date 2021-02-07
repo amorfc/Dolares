@@ -42,12 +42,11 @@
                 android:id="@+id/isActive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@{core.status}"
+                android:layout_marginTop="24dp"
+                android:text="@{`Status: `+core.status}"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/imageView5"
                 app:layout_constraintStart_toStartOf="@+id/imageView5"
                 app:layout_constraintTop_toBottomOf="@+id/imageView5" />
@@ -70,10 +69,20 @@
                 android:layout_marginTop="16dp"
                 android:text="@{core.serial}"
                 android:textColor="@color/black"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@{`Reuse: `+ core.reuseCount.toString()}"
+                app:layout_constraintEnd_toEndOf="@+id/isActive"
+                app:layout_constraintStart_toStartOf="@+id/isActive"
+                app:layout_constraintTop_toTopOf="@+id/isActive" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
